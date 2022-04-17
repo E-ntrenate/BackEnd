@@ -19,7 +19,7 @@ public class Cursos {
             joinColumns = @JoinColumn(
                     name = "curso_id", referencedColumnName = "id_curso"),
             inverseJoinColumns = @JoinColumn(
-                    name = "usuario_id", referencedColumnName = "id_usuario"))
+                    name = "usuario_id", referencedColumnName = "idUsuario"))
     private Collection<Usuario> usuarios;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contenidoCurso")

@@ -1,6 +1,7 @@
 package com.example.entrenate.model;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.Collection;
 import java.util.Date;
 
@@ -10,129 +11,148 @@ import java.util.Date;
 public class Usuario {
     @Id
     @GeneratedValue(strategy  =GenerationType.IDENTITY)
-    private Long id_usuario;
-    private String Nombre_usuario;
-    private  Long Documento;
-    private String Correo;
-    private  String Contraseña;
-    private Long Edad;
-    private String Ciudad;
-    private Long Numero_identidad;
-    private String Tipo_documento;
-    private Date Fecha_nacimiento;
+    private Long idUsuario;
+    private String nombreUsuario;
+    private String apellidoUsuario;
+    private String nickname;
+    private File documento;
+    private String correo;
+    private String password;
+    private Long edad;
+    private String ciudad;
+    private Long numeroIdentidad;
+    private String tipoIdentidad;
+    private Date fechaNacimiento;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "usuario_id", referencedColumnName = "id_usuario"),
+                    name = "usuario_id", referencedColumnName = "idUsuario"),
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id_rol"))
-
-
-
     private Collection< Rol > roles;
-/*
-
- */
-
-
-
 
     public Usuario() {
     }
 
-    public Usuario(String nombre_usuario, Long documento, String correo, String contraseña, Long edad, String ciudad, Long numero_identidad, String tipo_documento, Date fecha_nacimiento, Collection<Rol> roles) {
-
-        this.Nombre_usuario = nombre_usuario;
-        this.Documento = documento;
-        this.Correo = correo;
-        this.Contraseña = contraseña;
-        this.Edad = edad;
-        this.Ciudad = ciudad;
-        this.Numero_identidad = numero_identidad;
-        this.Tipo_documento = tipo_documento;
-        this.Fecha_nacimiento = fecha_nacimiento;
+    public Usuario(Long idUsuario, String nombreUsuario, String apellidoUsuario, String nickname, File documento, String correo, String password, Long edad, String ciudad, Long numeroIdentidad, String tipoIdentidad, Date fechaNacimiento, Collection<Rol> roles) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.nickname = nickname;
+        this.documento = documento;
+        this.correo = correo;
+        this.password = password;
+        this.edad = edad;
+        this.ciudad = ciudad;
+        this.numeroIdentidad = numeroIdentidad;
+        this.tipoIdentidad = tipoIdentidad;
+        this.fechaNacimiento = fechaNacimiento;
         this.roles = roles;
     }
 
-    public Long getId_usuario() {
-        return id_usuario;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNombre_usuario() {
-        return Nombre_usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        Nombre_usuario = nombre_usuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-    public Long getDocumento() {
-        return Documento;
+    public String getApellidoUsuario() {
+        return apellidoUsuario;
     }
 
-    public void setDocumento(Long documento) {
-        Documento = documento;
+    public void setApellidoUsuario(String apellidoUsuario) {
+        this.apellidoUsuario = apellidoUsuario;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public File getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(File documento) {
+        this.documento = documento;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        Correo = correo;
+        this.correo = correo;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getEdad() {
-        return Edad;
+        return edad;
     }
 
     public void setEdad(Long edad) {
-        Edad = edad;
+        this.edad = edad;
     }
 
     public String getCiudad() {
-        return Ciudad;
+        return ciudad;
     }
 
     public void setCiudad(String ciudad) {
-        Ciudad = ciudad;
+        this.ciudad = ciudad;
     }
 
-    public Long getNumero_identidad() {
-        return Numero_identidad;
+    public Long getNumeroIdentidad() {
+        return numeroIdentidad;
     }
 
-    public void setNumero_identidad(Long numero_identidad) {
-        Numero_identidad = numero_identidad;
+    public void setNumeroIdentidad(Long numeroIdentidad) {
+        this.numeroIdentidad = numeroIdentidad;
     }
 
-    public String getTipo_documento() {
-        return Tipo_documento;
+    public String getTipoIdentidad() {
+        return tipoIdentidad;
     }
 
-    public void setTipo_documento(String tipo_documento) {
-        Tipo_documento = tipo_documento;
+    public void setTipoIdentidad(String tipoIdentidad) {
+        this.tipoIdentidad = tipoIdentidad;
     }
 
-    public Date getFecha_nacimiento() {
-        return Fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        Fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Collection<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Rol> roles) {
+        this.roles = roles;
     }
 }
