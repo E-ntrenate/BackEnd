@@ -12,8 +12,8 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy  =GenerationType.IDENTITY)
     private Long idUsuario;
-    private String nombreUsuario;
-    private String apellidoUsuario;
+    private String nombre;
+    private String apellido;
     private String nickname;
     private File documento;
     private String correo;
@@ -36,10 +36,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long idUsuario, String nombreUsuario, String apellidoUsuario, String nickname, File documento, String correo, String password, Long edad, String ciudad, Long numeroIdentidad, String tipoIdentidad, Date fechaNacimiento, Collection<Rol> roles) {
+    public Usuario(Long idUsuario, String nombre, String apellido, String nickname, File documento, String correo, String password, Long edad, String ciudad, Long numeroIdentidad, String tipoIdentidad, Date fechaNacimiento, Collection<Rol> roles) {
         this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.nickname = nickname;
         this.documento = documento;
         this.correo = correo;
@@ -60,20 +60,20 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidoUsuario() {
-        return apellidoUsuario;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoUsuario(String apellidoUsuario) {
-        this.apellidoUsuario = apellidoUsuario;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNickname() {

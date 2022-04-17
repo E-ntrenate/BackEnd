@@ -11,10 +11,16 @@
     <div class="row p-5 justify-content-center pd-2">
     <div class="col-6">
     <div class="container border p-4 rounded-3">
-      <form th:action="@{/home}" method="post"/>
+      <form th:action="@{/login}" method="post"/>
         <legend class=" text-center border-bottom">
           Ingresa a tu cuenta 
         </legend>
+        <div th:if="${param.error}" class="alert alert-error">
+          Los datos no son correctos.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+          Te has desconectado.
+        </div>
         <div class="row p-4 py-3">
           <div class="form-group">
             <label class="form-label">Usuario o Correo electrónico</label>
@@ -29,7 +35,7 @@
           </div>
         </div>
         <div class="d-grid p-3" >
-          <button class="btn" style="border-color: #1B5BAC; color: #1B5BAC">¡Iniciar Sesión!</button>
+          <button class="btn" type="submit" style="border-color: #1B5BAC; color: #1B5BAC">¡Iniciar Sesión!</button>
         </div>
       </form>
     </div>
