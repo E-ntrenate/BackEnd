@@ -14,15 +14,17 @@ public class Usuario {
     private Long idUsuario;
     private String nombre;
     private String apellido;
+    @Column(nullable = false, unique = true)
     private String nickname;
     private File documento;
     private String correo;
+    @Column(nullable = false, unique = true, length = 64)
     private String password;
     private Long edad;
     private String ciudad;
     private Long numeroIdentidad;
     private String tipoIdentidad;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -36,7 +38,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long idUsuario, String nombre, String apellido, String nickname, File documento, String correo, String password, Long edad, String ciudad, Long numeroIdentidad, String tipoIdentidad, Date fechaNacimiento, Collection<Rol> roles) {
+    public Usuario(Long idUsuario, String nombre, String apellido, String nickname, File documento, String correo, String password, Long edad, String ciudad, Long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -140,11 +142,11 @@ public class Usuario {
         this.tipoIdentidad = tipoIdentidad;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

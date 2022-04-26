@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,55 +10,55 @@
   <body>
     <div class=" abs-center p-5 align-items-center">
       <div class="container border p-5 rounded-3 align-self-center" style="border-color: #1B5BAC;">
-      <form method="POST" class="">
+      <form th:action="@{/process_register}" th:object="${usuario}" method="POST" class="">
 	<legend class="border-bottom mb-3 text-center">
 	    Crea tu cuenta
 	</legend>
 	<div class=" mb-3">
 	  <label for="Nombre" class="form-label">Nombre y Apellidos</label>
-	  <input name="name" type="text" class="form-control" id="Nombre" placeholder="Escribe tu nombre completo">
+	  <input name="name" type="text" class="form-control" id="Nombre" th:field="*{nombre}" placeholder="Escribe tu nombre completo">
 	</div>
 	<div class="mb-3">
 	  <label for="Usuario" class="form-label">Nombre de usuario</label>
-	  <input name="username" type="text" class="form-control" id="Usuario" placeholder="Elige cómo te llamaremos">
+	  <input name="username" type="text" class="form-control" id="Usuario" th:field="*{nickname}" placeholder="Elige cómo te llamaremos">
 	</div>
 	<div class="row">
 	  <div class="col-md-6 mb-3">
 	    <label for="fecha" class="form-label">Fecha de nacimiento</label>
-	    <input type="date" id="fecha" name="date" class="form-control">
+	    <input type="date" id="fecha" name="date" class="form-control" th:field="*{fechaNacimiento}">
 	  </div>
 	  <div class="col-md-6 mb-3">
 	    <label for="ciudad" class="form-label">Ciudad</label>
-	    <input type="text" id="ciudad" name="city" class="form-control" placeholder="Ciudad"> </div>
+	    <input type="text" id="ciudad" name="city" class="form-control" th:field="*{ciudad}" placeholder="Ciudad"> </div>
 	  </div>
 	<div >
 	<label for="documento" class="form-label">Identificación</label>
 	<div class="row">
 	  <div class="col-md-3 mb-3">
-	    <select name="type_id" class="form-select" aria-label="Default select example" >
-	      <option selected>CC</option>
-	      <option value="1">CE</option>
-	      <option value="2">TI</option>
-	      <option value="3">PP</option>
+	    <select name="type_id" class="form-select" th:field="*{tipoIdentidad}" aria-label="Default select example" >
+	      <option value="1" selected>CC</option>
+	      <option value="2">CE</option>
+	      <option value="3">TI</option>
+	      <option value="4">PP</option>
 	    </select>
 	  </div>
 	  <div class="col-md-9 mb-3">
-	    <input name="id_number" type="text" class="form-control" id="documento" placeholder="Número de identificación actual" >
+	    <input name="id_number" type="text" class="form-control" id="documento" th:field="*{numeroIdentidad}" placeholder="Número de identificación actual" >
 	  </div>
 	</div>
 	</div>
 	<div class="mb-3">
 	  <label for="Correo" class="form-label">Correo electrónico</label>
-	  <input name="email" type="email" class="form-control" id="Correo" aria-describedby="emailHelp" placeholder="El correo que más uses">
+	  <input name="email" type="email" class="form-control" id="Correo" aria-describedby="emailHelp" th:field="*{correo}" placeholder="El correo que más uses">
 	</div>
 	<div class="row">
 	  <div class="col-md-6 mb-3">
 	    <label for="contraseña" class="form-label">Contraseña</label>
-	    <input type="password" class="form-control" id="contraseña" placeholder="Tu contraseña">
+	    <input type="password" class="form-control" id="contraseña" th:field="*{password}" placeholder="Tu contraseña">
 	  </div>
 	  <div class="col-md-6 mb-3">
 	    <label for="con_contraseña" class="form-label">Confirmar Contraseña</label>
-	    <input name="password" type="password" class="form-control" id="con_contraseña" placeholder="Repetir contraseña">
+	    <input name="password" type="password" class="form-control" id="con_contraseña" th:field="*{password}" placeholder="Repetir contraseña">
 	  </div>
 	</div>
 	<div class="d-grid pt-4">
