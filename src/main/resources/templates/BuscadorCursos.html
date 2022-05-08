@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.bootstrap4.min.css">
+
+<style>
+
+table th {
+background-color: #363556;
+color:#FDFDFE;   
+}
+</style>
+
+</head>
+<body>
+<br>
+ <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID Curso</th>
+                <th>Nombre del curso</th>
+                <th>Descripción</th>
+                <th>Fecha de Creación</th>
+                <th>Nombre del Tutor</th>
+                <th>Acciones</th>
+            </tr>
+                
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Matematicas</td>
+                <td>Capítulo 001
+                    Lógica elemental y teoría de conjuntos (6 horas) 1. Proposiciones simples, conectivos lógicos, disyunción, negación, conjunción e implicación. 2. Cuantificadores y negación de proposiciones con cuantificadores y conectivos 3. Relaciones y operaciones entre conjuntos, propiedades.
+                    Capítulo 002
+                    Números (4 horas) 1. Sistemas numéricos, naturales, enteros, racionales y reales, operaciones y sus propiedades. 2. Orden. Intervalos 3. Representación gráfica, distancia y valor absoluto</td>
+                <td>27/04/2022</td>
+                <td>Ibeth Marcela Rubio Perilla</td>
+                <td><button>Editar</button><button>Eliminar</button> </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Español</td>
+                <td>Capítulo 001
+                    Lógica elemental y teoría de conjuntos (6 horas) 1. Proposiciones simples, conectivos lógicos, disyunción, negación, conjunción e implicación. 2. Cuantificadores y negación de proposiciones con cuantificadores y conectivos 3. Relaciones y operaciones entre conjuntos, propiedades.
+                    Capítulo 002
+                    Números (4 horas) 1. Sistemas numéricos, naturales, enteros, racionales y reales, operaciones y sus propiedades. 2. Orden. Intervalos 3. Representación gráfica, distancia y valor absoluto</td>
+                <td>13/03/2022</td>
+                <td>Margaret Johanna Garzon Merchan</td>
+                <td><button>Editar</button><button>Eliminar</button> </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Programación</td>
+                <td>Capítulo 001
+                    Lógica elemental y teoría de conjuntos (6 horas) 1. Proposiciones simples, conectivos lógicos, disyunción, negación, conjunción e implicación. 2. Cuantificadores y negación de proposiciones con cuantificadores y conectivos 3. Relaciones y operaciones entre conjuntos, propiedades.
+                    Capítulo 002
+                    Números (4 horas) 1. Sistemas numéricos, naturales, enteros, racionales y reales, operaciones y sus propiedades. 2. Orden. Intervalos 3. Representación gráfica, distancia y valor absoluto</td>
+                <td>18/03/2021</td>
+                <td>Margaret Johanna Garzon Merchan</td>
+                <td><button>Editar</button><button>Eliminar</button> </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Ingles</td>
+                <td>Capítulo 001
+                    Lógica elemental y teoría de conjuntos (6 horas) 1. Proposiciones simples, conectivos lógicos, disyunción, negación, conjunción e implicación. 2. Cuantificadores y negación de proposiciones con cuantificadores y conectivos 3. Relaciones y operaciones entre conjuntos, propiedades.
+                    Capítulo 002
+                    Números (4 horas) 1. Sistemas numéricos, naturales, enteros, racionales y reales, operaciones y sus propiedades. 2. Orden. Intervalos 3. Representación gráfica, distancia y valor absoluto</td>
+                <td>19/02/2024</td>
+                <td>Gustavo Adolfo Nieto Clavijo</td>
+                <td><button>Editar</button><button>Eliminar</button> </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Metodos de Estudio</td>
+                <td>Capítulo 001
+                    Lógica elemental y teoría de conjuntos (6 horas) 1. Proposiciones simples, conectivos lógicos, disyunción, negación, conjunción e implicación. 2. Cuantificadores y negación de proposiciones con cuantificadores y conectivos 3. Relaciones y operaciones entre conjuntos, propiedades.
+                    Capítulo 002
+                    Números (4 horas) 1. Sistemas numéricos, naturales, enteros, racionales y reales, operaciones y sus propiedades. 2. Orden. Intervalos 3. Representación gráfica, distancia y valor absoluto</td>
+                <td>12/04/2022</td>
+                <td>Mario Andres Velasquez Mendez</td>
+                <td><button>Editar</button><button>Eliminar</button> </td>
+            </tr>
+            
+        </tfoot>
+    </table>
+    <button id="btn1">Añadir un nuevo Usuario</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script> 
+    
+    <script>
+ 
+    
+    $(document).ready(function(){
+        var table = $('#example').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true 
+        });
+    
+        $('#example thead tr').clone(true).appendTo( '#example thead' );
+    
+        $('#example thead tr:eq(1) th').each( function (i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html( '<input type="text" placeholder="Buscar...'+title+'" />' );
+     
+            $('input', this ).on( 'keyup change', function () {
+                if ( table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value )
+                        .draw();
+                }
+            } );
+        } ); 
+        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    });    
+    
+    
+     
+    
+    </script>
+    
+    
+    </body>
+    </html>
