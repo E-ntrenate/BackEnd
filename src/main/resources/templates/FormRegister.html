@@ -1,141 +1,152 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-
-	  
-    <link rel="stylesheet" href="styles/main.css" />
+	<!-- Estilo de letra -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet"/> 
+    
+	<!-- Archivos a los que llama-->
+	<link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/normalize.css" />
-    <title>Register</title>
-    <!-- Bootstrap CSS -->
+    
+	<!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-  <body>
-	<main class="login-design">
-		<div class="waves2">
-			<img src="assets/RegisterPerson.png" width="70%" height="70%" alt="" />
-		  </div>
-		<div class="login">
-    		<div class=" abs-center p-5 align-items-center">
-      			<div class="container border p-5 rounded-3 align-self-center" style="border-color: #1B5BAC;">
-					<form th:action="@{/register}" method="POST" class="login-form">
-					<legend class="border-bottom mb-3 text-center" style="color:#1B5BAC">
-			Crea tu cuenta
-					</legend>
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	
-					<div class="mb-3">
-					<div class="input-group">
-						<label class="input-fill">
-							<input type="text" name="Nombre" id="Nombre" size="100" class="form-control" required />
-							<span class="input-label">Nombre y Apellidos</span>
-							<i class="fa-thin fa-user"></i>
-						  </label>
-					</div>
-					</div>
-					<div class="mb-3">
-						<div class="input-group">
-							<label class="input-fill">
-							  <input type="text" name="Username" id="Username"size="100%" class="form-control" required />
-							  <span class="input-label">Nombre de Usuario</span>
-							  <i class="fa-solid fa-user-bounty-hunter"></i>
-							</label>
-						  </div>
-					</div>
-					<div class="row">
-						<div class="col-md-5 mb-5">
-							<div class="input-group">
-								<label class="input-fill">
-									<input type="date" name="Fecha" id="Fecha" class="form-control" size="40%" required />
-									<span class="input-label2">Fecha de Nacimiento</span>
-									<i class="fa-light fa-calendar-image"></i>
-								</label>
-							</div>
-						</div>
-						<div class="col-md-7 mb-5">
-							<div class="input-group">
-								<label class="input-fill">
-									<input type="text" name="ID" id="Ciudad" class="form-control" size="40%" required />
-									<span class="input-label">Ciudad</span>
-									<i class="fa-solid fa-house-building"></i>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">		
-						<div class="col-md-3 mb-3">
-							<div class="input-group">
-								<label class="input-fill">
-									<label class="input-label">Identificación</label>
-									<div class="select">
-									<select name="type_id" class="form-select" aria-label="Default select example" >
-										<option selected>CC</option>
-										<option value="1">CE</option>
-										<option value="2">TI</option>
-										<option value="3">PP</option>
-									</select>
+	 <!-- Titulo -->
+	 <title>Register</title>
+
+</head>
+<body>
+	<section> 
+		<div class="login"> 	<!--Zona para mostrar la mitad derecha de la pagina donde se encuentra el formulario de register-->
+			<div class="login-data">
+				<div class=" abs-center p-4 align-items-center"> 
+					<div class="container border p-3 align-self-center" style="border-color: #1B5BAC;">
+						<form th:action="@{/register}" method="POST" class="login-form">
+							<legend class="border-bottom mb-2 text-center" style="color:#1B5BAC">Crea tu cuenta</legend>
+							<div class="row">
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="text" name="Nombre" id="Nombre" class="form-control" required />
+											<span class="input-label">Nombre-Apellidos</span>
+											<i class="fa-solid fa-user"></i>
+										</label>
 									</div>
+								</div>
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="text" name="Username" id="Username" class="form-control" required />
+											<span class="input-label">Usuario</span>
+											<i class="fa-solid fa-user-secret"></i>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="text" name="ID" id="Ciudad" class="form-control" required />
+											<span class="input-label">Ciudad</span>
+											<i class="fa-solid fa-building"></i>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="date" name="Fecha" id="Fecha" class="form-control" style="padding-left: 2rem" required />
+											<span class="input-label2">Fecha de Nacimiento</span>
+											<i class="fa-regular fa-calendar-days"></i>
+										</label>
+									</div>
+								</div>	
+							</div>
+							<div class="row">		
+								<div class="col-md-4 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<div class="select">
+												<select name="type_id" class="form-select" aria-label="Default select example" >
+													<option selected>CC</option>
+													<option value="1">CE</option>
+													<option value="2">TI</option>
+													<option value="3">PP</option>
+												</select>
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-7 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="text" name="ID_Number" id="ID_Number" class="form-control" required />
+											<span class="input-label">Número ID</span>
+											<i class="fa-solid fa-id-card"></i>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="contenedor-btn-file">
+											<i class="fas fa-file"></i>
+											Adjuntar ID
+											<label for="btn-file"></label>
+											<input type="file" id="btn-file">
+										</label>
+									</div>
+								</div>
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="email" name="email" id="email" class="form-control" style="size:130%" required />
+											<span class="input-label">Correo Electronico</span>
+											<i class="fa-solid fa-envelope"></i>
+										</label>
+									</div>
+								</div>
 								
-								</label>
 							</div>
-						</div>
-						<div class="col-md-9 mb-3">
-							<div class="input-group">
-								<label class="input-fill">
-									<input type="text" name="ID_Number" id="ID_Number" class="form-control" size="60%" required />
-									<span class="input-label">Número de Identificación</span>
-									<i class="fa-duotone fa-rectangle-history-circle-user"></i>
-								</label>
+							<div class="row">
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="password" name="password" id="password" class="form-control"  required />
+											<span class="input-label">Contraseña</span>
+											<i class="fas fa-lock"></i>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-6 mb-1">
+									<div class="input-group">
+										<label class="input-fill">
+											<input type="password" name="password" id="con_password" class="form-control"  required />
+											<span class="input-label">Confirmar Contraseña</span>
+											<i class="fa-solid fa-key"></i>
+										</label>
+									</div>
+								</div>
 							</div>
-						</div>
+							<div class="d-grid pt-0">
+								<input type="submit" value="¡Inicia ahora!" class="btn-login"/>
+								<a href="#" style="text-align:right">¿Ya tienes una cuenta? Inicia Sesión</a>
+							</div>
+						</form>
 					</div>
-		
-		<div class="mb-3">
-			<div class="input-group">
-				<label class="input-fill">
-					<input type="email" name="email" id="email" class="form-control" size="100%" required />
-					<span class="input-label">Correo Electronico</span>
-					<i class="fas fa-envelope"></i>
-				</label>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-		<div class="col-md-5 mb-5">
-			<div class="input-group">
-			<label class="input-fill">
-                <input type="password" name="password" id="password" class="form-control"  size="40%" required />
-                <span class="input-label">Contraseña</span>
-				<i class="fas fa-lock"></i>
-              </label>
-			</div>
-		</div>
-		<div class="col-md-5 mb-5">
-			<div class="input-group">
-			<label class="input-fill">
-                <input type="password" name="password" id="con_password" class="form-control"  size="40%" required />
-                <span class="input-label">Confirmar Contraseña</span>
-				<i class="fas fa-lock"></i>
-              	</label>
-			</div>
+		<div class="waves2"> 	<!--Zona para mostrar la mitad ziquierda de la pagina donde se encuentra la imagen-->
+			<img src="assets/RegisterPerson.png" alt="" />		
 		</div>
 		</div>
-		<div class="d-grid pt-4">
-			<input type="submit" value="¡Inicia ahora!" size="100%" class="btn-login"/>
-			<a href="#" style="text-align:right">¿Ya tienes una cuenta? Inicia Sesión</a>
-		</div>
-		</form>
-		</div>
-		</div>
-		</div>
-	</main>	
-	<script>
+<script>
 		const inputs = document.querySelectorAll("input");
 		inputs.forEach( input =>{
 			input.onfocus = ( )=>{
@@ -150,7 +161,8 @@
 			  }
 			}
 		} );
-	  </script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	</body>
-	</html>
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</section>
+</body>
+</html>
