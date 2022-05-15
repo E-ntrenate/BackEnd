@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Contenido_Cursos {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_contenido;
-    private String Link_contenido;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String link;
 }

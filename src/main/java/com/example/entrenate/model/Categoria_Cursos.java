@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Categoria_Cursos {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_categoria;
-    private String Nombre_categoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nombre;
 }

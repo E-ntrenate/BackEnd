@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
+    private int id;
 
     @Column(nullable = false)
     private String nombre;
@@ -51,9 +51,9 @@ public class Usuario {
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "usuario_id", referencedColumnName = "idUsuario"),
+                    name = "usuario_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "rol_id", referencedColumnName = "idRol"))
+                    name = "rol_id", referencedColumnName = "id"))
     private Collection<Rol> roles;
 
     //Constructor sin Id.

@@ -63,6 +63,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     //Mapea los roles del usuario a permisos.
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Rol> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombreRol())).collect(Collectors.toList());
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
 }

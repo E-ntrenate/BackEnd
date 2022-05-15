@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Date;
 @Entity
 @Getter
 @Setter
@@ -12,25 +11,28 @@ import java.util.Date;
 @AllArgsConstructor
 public class Cursos {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_curso;
-    private String Nombre_curso;
-    private String Descripción;
-    private Date Fecha_creación;
-    private String Nombre_tutor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, unique = true)
+    private String nombre;
+
+    private String desc;
+    private String fecha;
+    private String tutor;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "Cursos_Inscritos",
             joinColumns = @JoinColumn(
-                    name = "curso_id", referencedColumnName = "id_curso"),
+                    name = "curso_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "usuario_id", referencedColumnName = "idUsuario"))
+                    name = "usuario_id", referencedColumnName = "id"))
     private Collection<Usuario> usuarios;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contenidoCurso")
     private Contenido_Cursos contenido_cursos;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoriaCursos")
