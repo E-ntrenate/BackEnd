@@ -1,33 +1,26 @@
 package com.example.entrenate.model;
 
+import lombok.*;
+
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rol {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_rol;
-    private String Nombre_rol;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRol;
+    private String nombreRol;
 
-    public Rol() {
-    }
+    @ManyToMany(mappedBy = "roles")
+    private List<Usuario> usuarios;
 
-    public Rol(String nombre_rol) {
-        this.Nombre_rol = nombre_rol;
-    }
-
-    public Long getId_rol() {
-        return id_rol;
-    }
-
-    public void setId_rol(Long id_rol) {
-        this.id_rol = id_rol;
-    }
-
-    public String getNombre_rol() {
-        return Nombre_rol;
-    }
-
-    public void setNombre_rol(String nombre_rol) {
-        Nombre_rol = nombre_rol;
+    //Constructor sin Id.
+    public Rol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 }
