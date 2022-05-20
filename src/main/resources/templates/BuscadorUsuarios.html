@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,97 +24,46 @@
  <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>ID Usuario</th>
+
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Alias</th>
                 <th>Documento</th>
                 <th>Correo</th>
-                <th>Contraseña</th>
+
                 <th>Edad</th>
                 <th>Ciudad</th>
                 <th>Número de Identidad</th>
                 <th>Tipo de Documento</th>
                 <th>Fecha de Nacimiento</th>
-                <th>Acciones</th>
+
             </tr>
                 
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Julian Steven</td>
-                <td>Vega Daza</td>
-                <td>jvegad</td>
-                <td>Null</td>
-                <td>jvegad@unal.edu.co</td>
-                <td>Julaaaa</td>
-                <td>20</td>
-                <td>Bogotá</td>
-                <td>1002271093</td>
-                <td>CC</td>
-                <td>2001/09/10</td>
-                <td><button>Editar</button><button>Eliminar</button> </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Johan Esteban</td>
-                <td>Vega Daza</td>
-                <td>esveda</td>
-                <td>Null</td>
-                <td>esveda@unal.edu.co</td>
-                <td>esvedaaaa</td>
-                <td>18</td>
-                <td>Medellin</td>
-                <td>1048846033</td>
-                <td>CC</td>
-                <td>2003/11/23</td>
-                <td><button>Editar</button><button>Eliminar</button> </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>David Steven</td>
-                <td>Rodriguez Hernan</td>
-                <td>DSTH</td>
-                <td>Null</td>
-                <td>dsth@unal.edu.co</td>
-                <td>12345</td>
-                <td>17</td>
-                <td>Bucaramanga</td>
-                <td>121022020</td>
-                <td>TI</td>
-                <td>2004/10/31</td>
-                <td><button>Editar</button><button>Eliminar</button> </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Santiago</td>
-                <td>Rodriguez Vallejo</td>
-                <td>SRVA</td>
-                <td>Null</td>
-                <td>srva@unal.edu.co</td>
-                <td>09876</td>
-                <td>19</td>
-                <td>Manizales</td>
-                <td>020203030</td>
-                <td>CC</td>
-                <td>2002/05/12</td>
-                <td><button>Editar</button><button>Eliminar</button> </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Juan Sebastian</td>
-                <td>Hernando</td>
-                <td>JSH</td>
-                <td>Null</td>
-                <td>jsh@unal.edu.co</td>
-                <td>56789</td>
-                <td>20</td>
-                <td>Manizales</td>
-                <td>020203030</td>
-                <td>CC</td>
-                <td>2001/06/19</td>
-                <td><button>Editar</button><button>Eliminar</button> </td>
+     </thead>
+     <tbody th:if="${usuarios != null}" >
+     <tr th:each="ju : ${usuarios}">
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.nombre}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.apellido}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.nickname}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.documento}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.correo}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.edad}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.ciudad}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.numeroIdentidad}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.tipoIdentidad}"></td>
+         <td style="color: #000 !Important"; scope="row" th:text="${ju.fechaNacimiento}"></td>
+         <td >
+             <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${ju.id}"
+                th:text="'Eliminar'" title="Eliminar">
+             </a>
+         </td>
+
+
+     </tr>
+     </tbody>
+
+                <td><button>Editar</button> </td>
             </tr>
             
         </tfoot>

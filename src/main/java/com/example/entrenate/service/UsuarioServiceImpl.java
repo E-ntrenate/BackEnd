@@ -5,8 +5,10 @@ import com.example.entrenate.model.Usuario;
 import com.example.entrenate.repository.UsuarioRepository;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,6 +48,20 @@ public class UsuarioServiceImpl implements UsuarioService{
         );
         return usuarioRepository.save(usuario);
     }
+
+    @Override
+    public List<Usuario> listarUsuarios() {
+        return (List<Usuario>) usuarioRepository.findAll();
+    }
+
+    @Override
+    public void eliminar(Integer id) {
+        Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        usuario.getAuthorities();
+        usuarioRepository.deleteById(id);
+
+    }
+
 
     //Obtiene el usuario por el nickname dado.
     @Override
