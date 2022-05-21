@@ -14,7 +14,7 @@ public class Cursos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = true)
+    //@Column(nullable = false, unique = true)
     private String nombre;
 
     private String desc;
@@ -30,6 +30,8 @@ public class Cursos {
                     name = "usuario_id", referencedColumnName = "id"))
     private Collection<Usuario> usuarios;
 
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contenidoCurso")
     private Contenido_Cursos contenido_cursos;
@@ -37,4 +39,14 @@ public class Cursos {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoriaCursos")
     private Categoria_Cursos categoria_cursos;
+
+    public Cursos(String nombre, String desc, String fecha, String tutor, Collection<Usuario> usuarios, Contenido_Cursos contenido_cursos, Categoria_Cursos categoria_cursos) {
+        this.nombre = nombre;
+        this.desc = desc;
+        this.fecha = fecha;
+        this.tutor = tutor;
+        this.usuarios = usuarios;
+        this.contenido_cursos = contenido_cursos;
+        this.categoria_cursos = categoria_cursos;
+    }
 }
