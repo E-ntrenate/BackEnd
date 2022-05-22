@@ -6,74 +6,74 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet"/>     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../../../../../Downloads/FrontEnd-develop/styles/main.css" />
-    <link rel="stylesheet" href="../../../../../../Downloads/FrontEnd-develop/styles/normalize.css" />
+    <link href="assets/css/Login.css" rel="stylesheet">
+    <link href="assets/css/notmalize.css" rel="stylesheet">
     <title>Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
     <section>
-            <div class="login">
-                <div class="waves">
-                    <img src="assets/loginPerson.png"  alt="" />
-                </div>
-                <div class="login-data">
-                    <form th:action="@{/login}" method="post" class="login-form">
-                        <div class="row p-4 justify-content-center pd-4">
-                            <div class="container border p-5 rounded-3">
-                                <legend class="text-center border-bottom" style="color:#1B5BAC">Inicio de Sesión</legend>
-                                <div th:if="${param.error}" class="alert alert-error">
-                                    Los datos no son correctos.
-                                </div>
-                                <div th:if="${param.logout}" class="alert alert-success">
+        <div class="login">
+            <div class="waves">
+                <img src="assets/img/Login/loginPerson.png"  alt="" />
+            </div>
+            <div class="login-data">
+                <form th:action="@{/login}" method="post" class="login-form">
+                    <div class="row p-4 justify-content-center pd-4">
+                        <div class="container border p-5 rounded-3">
+                            <legend class="text-center border-bottom" style="color:#1B5BAC">Inicio de Sesión</legend>
+                            <div th:if="${param.error}" class="alert alert-error">
+                                Los datos no son correctos.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success">
                                     Te has desconectado.
-                                </div>
-                                <div class="row p-5 py-1">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="email" name="email" id="email" class="form-control" size="50%" required />
-                                                <span class="input-label">Correo Electrónico</span>
-                                                <i class="fas fa-envelope"></i>
-                                            </label>
-                                        </div>
+                            </div>
+                            <div class="row p-5 py-1">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-fill">
+                                            <input type="email" name="email" id="email" class="form-control" size="50%" required />
+                                            <span class="input-label">Correo Electrónico</span>
+                                            <i class="fas fa-envelope"></i>
+                                        </label>
                                     </div>
-                                </div>
-                                <div class="row p-5 py-1">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="password" name="password" id="password" class="form-control" size="50%" required />
-                                                <span class="input-label">Contraseña</span>
-                                                <i class="fas fa-lock"></i>
-                                                <a href="#" style="text-align:left">¿Olvidaste tu contraseña?</a>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="Iniciar Sesión" class="btn-login"/> 
-                                    <a href="#" style="text-align:right">¿Necesitas una Cuenta?</a>
                                 </div>
                             </div>
+                            <div class="row p-5 py-1">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-fill">
+                                            <input type="password" name="password" id="password" class="form-control" size="50%" required />
+                                            <span class="input-label">Contraseña</span>
+                                            <i class="fas fa-lock"></i>
+                                            <a href="#" style="text-align:left">¿Olvidaste tu contraseña?</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Iniciar Sesión" class="btn-login"/> 
+                                <a href="#" style="text-align:right">¿Necesitas una Cuenta?</a>
+                            </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        <script>
-            const inputs = document.querySelectorAll("input");
-            inputs.forEach( input =>{
-                input.onfocus = ( )=>{
-                    input.nextElementSibling.classList.add("top");
+        </div>
+    <script>
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach( input =>{
+            input.onfocus = ( )=>{
+                input.nextElementSibling.classList.add("top");
+            }
+            input.onblur = ( )=>{
+                input.value = input.value.trim( )
+                if ( input.value.trim( ).length == 0 ) {
+                    input.nextElementSibling.classList.remove("top");
                 }
-                input.onblur = ( )=>{
-                    input.value = input.value.trim( )
-                    if ( input.value.trim( ).length == 0 ) {
-                        input.nextElementSibling.classList.remove("top");
-                    }
-                }
-            } );
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            }
+        } );
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </section>
 </body>
 </html>
