@@ -1,0 +1,288 @@
+*, **::before, *::after {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Dosis', sans-serif;
+    }
+    
+    section{
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    background: #1B5BAC;
+  
+  }
+  
+  .login {
+    background: #FDFDFE;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .7);
+    overflow: auto;
+  }
+  
+    .waves {
+      background: #011248;
+      position: relative;
+      width: 50%;
+      height: 100%;
+    }
+  
+    .waves img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  
+    }
+    .waves2 {
+      background: #011248;
+      position: relative;
+      width: 50%;
+      height: 100%;
+    }
+  
+    .waves2 img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  
+    }
+    
+    .login-data {
+      position: relative;
+      display: flex;
+      background: #FDFDFE;
+      width: 50%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .login-data h1 {
+      font-weight: 200;
+    }
+    
+    .input-group {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 1.5rem;
+      size: 100%;
+    }
+    
+    .input-fill input:focus {
+      outline: none;
+      border-color: #1B5BAC;
+    }
+    
+    .input-fill input:hover {
+      background-color: #FDFDFE;
+    }
+  
+    .select {
+      appearance: none;
+      outline: 0;
+      border: 0;
+      box-shadow: none;
+      flex: 0;
+      padding: 0em;
+      color: #FDFDFE;
+      background-image: none;
+      cursor: pointer;
+    }
+  
+    select::-ms-expand {
+      display: none;
+    }
+  
+    .select {
+      position: relative;
+      display: flex;
+      width: 5rem;
+      height: 2.5rem;
+      border-radius: .25em;
+      overflow: hidden;
+    }
+    .select::after {
+      content: '\25BC';
+      position: absolute;
+      height: 2.5rem;
+      top: 0;
+      right: 0;
+      padding: 0.5rem;
+      background-color: #011248;
+      transition: .25s all ease;
+      pointer-events: none;
+    }
+  
+    .select:hover::after {
+      color: #1B5BAC;
+    }
+    
+    .input-fill .input-label.top {
+      top: 0;
+      margin-bottom: 2em;
+      color: #1B5BAC;
+    }
+    
+    .input-fill input:focus ~i {
+      color: #1B5BAC;
+    }
+    /*reposo*/
+    .input-fill input {
+      border: none;
+      border-bottom: 3px solid #363556;
+      width: 100%;
+      height: 3rem;
+      font-size: 0.8rem;
+      padding-left: 2.5rem;
+      line-height: 110%;
+      padding-top: 2rem;    
+      padding-bottom: 0.5rem;
+    }
+    .input-fill .input-label {
+      position: absolute;
+      top: 15px;
+      left: 40px;
+      line-height: 110%;
+      color: #363556;
+      transition: top 0.2s;
+      font-weight: 700;
+      font-size: 70%;
+    }
+  
+    
+    .input-fill i {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      color: #363556;
+      font-size: 1.5rem;
+    }
+    
+    .input-fill .input-label2 {
+      position: absolute;
+      top: 0;
+      left: 40px;
+      line-height: 110%;
+      color: #363556;
+      transition: top 0.2s;
+      font-weight: 700;
+      font-size: 70%;
+    }
+    .input-fill .input-label2.top {
+      margin-bottom: 1rem;
+      color: #1B5BAC;
+    }
+    .login-form a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      color: #363556;
+      margin-bottom: 0.2rem;
+      font-weight: 900;
+      transition: 0.3s ease-in-out all;
+      font-size: 80%;
+      padding: 0.5rem ;
+    }
+    
+    .login-form a:hover {
+      color: #1B5BAC;
+    }
+    
+  
+    .btn-login {
+      border-radius: 3rem;
+      width: 100%;
+      border: 1px solid #1B5BAC;
+      line-height: 1.6rem;
+      font-size: 1rem;
+      background-color: #011248;
+      color: #FDFDFE;
+      padding: 0rem 0;
+      transition: 0.3s ease-in-out all;
+      font-weight: 500;
+    }
+    
+    .btn-login:hover {
+      cursor: pointer;
+      background-color: #FDFDFE;
+      color: #1B5BAC;
+    }
+  
+    .contenedor-btn-file input[type="file"] {
+      appearance: none;
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+  }
+  .contenedor-btn-file {
+      display: inline-block;
+      position: relative;
+      background-color: #011248;
+      color: #FDFDFE;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: ease-out 120ms background-color;
+  }
+  .contenedor-btn-file:hover {
+      background-color: #1B5BAC;
+  }
+  .contenedor-btn-file:active {
+      background-color: #1B5BAC;
+  }
+  .contenedor-btn-file > i {
+      margin-right: 15px;
+  }
+  
+  .contenedor-btn-file label {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+  }
+  @media screen and (max-width:768px){
+    section {
+      padding: 5px;
+    }
+    .waves2 {
+      position: relative;
+      width: 0;
+      height: 0;
+      top:0;
+      left:0;
+    }
+    .login {
+      width: 100%;
+      height: 100%;
+      z-index: 3; 
+  
+    }
+  
+    .login-data {
+      width: 100%;
+      padding: 25px;
+      background:rgba(255, 255, 255, .5);
+    }
+  }
+  
