@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Detalles del Curso</title>
+    <title>Crear Curso</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800display=swap" rel="stylesheet"/>     
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/6.1.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,6 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="#">Perfil</a></li>
-                    <li><a class="getstarted scrollto" href="FormRegister.html">Registro</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -61,19 +60,13 @@
                             <div class="row p-4 justify-content-center pd-4">
                                 <div class="container border p-3 rounded-3">
                                     <legend class="text-center border-bottom" style="color:#1B5BAC">Inicio de Sesión</legend>
-                                    <div th:if="${param.error}" class="alert alert-error">
-                                        Los datos no son correctos.
-                                    </div>
-                                    <div th:if="${param.logout}" class="alert alert-success">
-                                        Te has desconectado.
-                                    </div>
                                     <div class="row p-5 py-1">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <label class="input-fill">
-                                                    <input type="email" name="email" id="email" class="form-control" size="50%" required />
-                                                    <span class="input-label">Correo Electrónico</span>
-                                                    <i class="fas fa-envelope"></i>
+                                                    <input type="text" name="Nombre" id="Nombre" class="form-control" size="50%" required />
+                                                    <span class="input-label">Nombre del Curso</span>                                                    
+                                                    <i class="fa-brands fa-discourse"></i>
                                                 </label>
                                             </div>
                                         </div>
@@ -82,15 +75,35 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <label class="input-fill">
-                                                    <input type="password" name="password" id="password" class="form-control" size="50%" required />
-                                                    <span class="input-label">Contraseña</span>
-                                                    <i class="fas fa-lock"></i>
-                                                    <a href="#" style="text-align:left">¿Olvidaste tu contraseña?</a>
+                                                    <input type="Descripción" name="Descripción" id="Descripción" class="form-control" size="50%" required />
+                                                    <span class="input-label">Descripción</span>
+                                                    <i class="fa-solid fa-envelope-open-text"></i>
                                                 </label>
                                             </div>
                                         </div>
-                                        <input type="submit" value="Iniciar Sesión" class="btn-login"/> 
-                                        <a href="#" style="text-align:right">¿Necesitas una Cuenta?</a>
+                                    </div>
+                                    <div class="row p-5 py-1">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label class="input-fill">
+                                                    <input type="date" name="fechacreacion" id="fechacreacion" class="form-control" size="50%" required />
+                                                    <span class="input-label">Fecha de creacion</span>
+                                                    <i class="fa-regular fa-calendar-days"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row p-5 py-1">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label class="input-fill">
+                                                        <input type="text" name="nombretutor" id="nombretutor" class="form-control" size="50%" required />
+                                                        <span class="input-label">Nombre del tutor asignado</span>
+                                                        <i class="fa-solid fa-id-card"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        <input type="submit" value="Crear Clase" class="btn-login"/> 
                                     </div>
                                 </div>
                             </div>
