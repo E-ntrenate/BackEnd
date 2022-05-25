@@ -62,6 +62,16 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     }
 
+    @Override
+    public Usuario updateUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public Usuario getUsuarioById(Integer id) {
+        return usuarioRepository.findById(id).get();
+    }
+
 
     //Obtiene el usuario por el nickname dado.
     @Override
