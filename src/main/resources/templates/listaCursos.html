@@ -44,6 +44,8 @@
         <td style="color: #000 !Important"; scope="row" th:text="${curso.nombre}"></td>
         <td style="color: #000 !Important"; scope="row" th:text="${curso.tutor}"></td>
         <td >
+            <a th:href = "@{/cursos/edit/{id}(id=${curso.id})}"
+               class = "btn btn-primary">Update</a>
             <a th:href = "@{/cursos/{id}(id=${curso.id})}"
                class = "btn btn-danger">Delete</a>
         </td>

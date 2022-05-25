@@ -1,12 +1,12 @@
 package com.example.entrenate.web;
 
+import com.example.entrenate.model.Cursos;
+import com.example.entrenate.model.Usuario;
 import com.example.entrenate.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CursosController {
@@ -30,9 +30,22 @@ public class CursosController {
     }
 
     @GetMapping("/cursos/edit/{id}")
-    public String editStudentForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("student", cursoService.getCursoById(id));
+    public String editCursoForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("curso", cursoService.getCursoById(id));
         return "editarCurso";
+    }
+
+    @PostMapping("/cursos/{id}")
+    public String updateCurso(@PathVariable("id") Integer id, @ModelAttribute("cursos") Cursos curso, Model model){
+        Cursos existingCurso = cursoService.getCursoById(id);
+        existingCurso.setNombre(curso.getNombre());
+        existingCurso.setDesc(curso.getDesc());
+        existingCurso.setTutor(curso.getTutor());
+        existingCurso.setFecha(curso.getFecha());
+
+        // save updated curso object
+        cursoService.updateCurso(existingCurso);
+        return "redirect:/";
     }
 
 }
