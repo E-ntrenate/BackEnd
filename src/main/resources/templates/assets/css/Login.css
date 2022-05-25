@@ -9,11 +9,12 @@
       font-family: 'Dosis', sans-serif;
     }
     
-    section{
-    width: 100vw;
+   .loginsection {
+    width: 100%;
     height: 100vh;
-    padding: 20px;
-    background: #1B5BAC;
+    position: relative;
+    background: url("../img/hero-bg.jpg") top center;
+    background-size: cover;
   
   }
   
@@ -33,7 +34,7 @@
       width: 50%;
       height: 100%;
     }
-  
+
     .waves img {
       position: absolute;
       top: 0;
@@ -261,8 +262,8 @@
       left: 0;
       cursor: pointer;
   }
-  @media screen and (max-width:768px){
-    section {
+ /* @media screen and (max-width:768px){
+    .loginsection {
       padding: 5px;
     }
     .waves2 {
@@ -285,4 +286,4 @@
       background:rgba(255, 255, 255, .5);
     }
   }
-  
+  */
