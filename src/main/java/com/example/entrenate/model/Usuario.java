@@ -41,7 +41,6 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private long numeroIdentidad;
 
-    @Column(nullable = false)
     private String tipoIdentidad;
 
     @Column(nullable = false)

@@ -14,4 +14,8 @@ public class Contenido_Cursos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String link;
+
+    public Contenido_Cursos(String link) {
+        this.link = link;
+    }
 }

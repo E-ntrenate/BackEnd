@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link rel="preconnect" href="https://fonts.g.com" />
 	<!-- Estilo de letra -->
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet"/> 
     
@@ -12,27 +12,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800display=swap" rel="stylesheet"/>     
+    <link rel="preconnect" href="https://fonts.g.com" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
-	<!-- Titulo -->
-	<title>Register</title>
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Titulo -->
+	<title>Registro</title>
+    <link href="/assets/img/favicon.ico" type="image/vnd.microsoft.icon" rel="icon" sizes="256x230">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
  
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
  
      <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/Login.css" rel="stylesheet">
-    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/Login.css" rel="stylesheet">
+    <link href="/assets/css/normalize.css" rel="stylesheet">
  
 </head>
 <body>
@@ -40,12 +40,12 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <!-- <img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="10%" alt=""> -->
-            <h1 class="logo"><a href="landing-page.html">E-ntrenate</a></h1>
-            <h1 class="logo"><a href="cursos.html">Cursos</a></h1>
+            <h1 class="logo"><a th:href="@{/}">E-ntrenate</a></h1>
+            <h1 class="logo"><a th:href="@{/cursos}">Cursos</a></h1>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="#">Perfil</a></li>
-                    <li><a class="getstarted scrollto" href="FormLogin.html">Login</a></li>
+                    <li><a class="nav-link scrollto" th:href="@{/perfil}">Perfil</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/login}">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -57,22 +57,33 @@
                 <div class="login-data">
                     <div class=" abs-center p-4 align-items-center"> 
                         <div class="container border p-6 align-self-center" style="border-color: #1B5BAC;">
-                            <form th:action="@{/register}" method="POST" class="login-form">
+                            <form th:action="@{/registro}" method="POST" class="login-form" th:object="${usuario}">
                                 <legend class="border-bottom mb-2 text-center" style="color:#1B5BAC">Registra un curso</legend>
                                 <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="text" name="Nombre" id="Nombre" class="form-control" required />
-                                                <span class="input-label">Nombre-Apellidos</span>
+                                            <label class="input-fill" for="nombre">
+                                                <input type="text" name="Nombre" id="nombre" class="form-control"   th:field="*{nombre}"/>
+                                                <span class="input-label">Nombre</span>
                                                 <i class="fa-solid fa-user"></i>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="text" name="Username" id="Username" class="form-control" required />
+                                            <label class="input-fill" for="apellido">
+                                                <input type="text" name="apellido" id="apellido" class="form-control"   th:field="*{apellido}"/>
+                                                <span class="input-label">Apellido</span>
+                                                <i class="fa-solid fa-user"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 mb-1">
+                                        <div class="input-group">
+                                            <label class="input-fill" for="nickname">
+                                                <input type="text" name="nickname" id="nickname" class="form-control" th:field="*{nickname}"/>
                                                 <span class="input-label">Usuario</span>
                                                 <i class="fa-solid fa-user-secret"></i>
                                             </label>
@@ -82,8 +93,8 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="text" name="ID" id="Ciudad" class="form-control" required />
+                                            <label class="input-fill" for="ciudad">
+                                                <input type="text" name="ciudad" id="ciudad" class="form-control" th:field="*{ciudad}"/>
                                                 <span class="input-label">Ciudad</span>
                                                 <i class="fa-solid fa-building"></i>
                                             </label>
@@ -91,8 +102,8 @@
                                     </div>
                                     <div class="col-md-6 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="date" name="Fecha" id="Fecha" class="form-control" style="padding-left: 2rem" required />
+                                            <label class="input-fill" for="fechaNacimiento">
+                                                <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control" th:field="*{fechaNacimiento}"/>
                                                 <span class="input-label2">Fecha de Nacimiento</span>
                                                 <i class="fa-regular fa-calendar-days"></i>
                                             </label>
@@ -116,8 +127,8 @@
                                     </div>
                                     <div class="col-md-7 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="text" name="ID_Number" id="ID_Number" class="form-control" required />
+                                            <label class="input-fill" for="numeroIdentidad">
+                                                <input type="text" name="numeroIdentidad" id="numeroIdentidad" class="form-control" th:field="*{numeroIdentidad}"/>
                                                 <span class="input-label">Número ID</span>
                                                 <i class="fa-solid fa-id-card"></i>
                                             </label>
@@ -137,8 +148,8 @@
                                     </div>
                                     <div class="col-md-6 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="email" name="email" id="email" class="form-control" style="size:130%" required />
+                                            <label class="input-fill" for="correo">
+                                                <input type="email" name="correo" id="correo" class="form-control" th:field="*{correo}"/>
                                                 <span class="input-label">Correo Electronico</span>
                                                 <i class="fa-solid fa-envelope"></i>
                                             </label>
@@ -149,33 +160,25 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="password" name="password" id="password" class="form-control"  required />
+                                            <label class="input-fill" for="password">
+                                                <input type="password" name="password" id="password" class="form-control" th:field="*{password}"/>
                                                 <span class="input-label">Contraseña</span>
                                                 <i class="fas fa-lock"></i>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-1">
-                                        <div class="input-group">
-                                            <label class="input-fill">
-                                                <input type="password" name="password" id="con_password" class="form-control"  required />
-                                                <span class="input-label">Confirmar Contraseña</span>
-                                                <i class="fa-solid fa-key"></i>
-                                            </label>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="d-grid pt-0">
-                                    <input type="submit" value="¡Inicia ahora!" class="btn-login"/>
-                                    <a href="FormLogin.html" style="text-align:right">¿Ya tienes una cuenta? Inicia Sesión</a>
+                                    <input type="submit" value="¡Inicia ahora!" class="btn-login" />
+                                    <a th:href="@{/login}" style="text-align:right">¿Ya tienes una cuenta? Inicia Sesión</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 pt-5 pt-lg-0 content">	<!--Zona para mostrar la mitad ziquierda de la pagina donde se encuentra la imagen-->
-                    <center><img src="assets/img/Login/RegisterPerson.png" class="img-fluid" width="100%" alt="" /></center>		
+                    <center><img src="/assets/img/Login/RegisterPerson.png" class="img-fluid" width="100%" alt="" /></center>
                 </div>
             </div>
         </div>
@@ -196,16 +199,16 @@
             } );
         </script>
             <!-- Vendor JS Files -->
-        <script src="assets/vendor/purecounter/purecounter.js"></script>
-        <script src="assets/vendor/aos/aos.js"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="/assets/vendor/purecounter/purecounter.js"></script>
+        <script src="/assets/vendor/aos/aos.js"></script>
+        <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/assets/vendor/php-email-form/validate.js"></script>
         
         <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+        <script src="/assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </section>
 </body>

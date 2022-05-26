@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Estudiantes</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.bootstrap4.min.css">
+
+    <style>
+
+        table th {
+            background-color: #011248;
+            color:#FDFDFE;
+        }
+    </style>
+
+</head>
+<body>
+<br>
+
+<h1> Cursos </h1>
+<table id="listCursos" class="display" style="width:100%">
+    <thead>
+    <tr>
+
+        <th>Id</th>
+        <th>Descripcion</th>
+        <th>Fecha</th>
+        <th>Nombre</th>
+        <th>Tutor</th>
+
+    </tr>
+
+    </thead>
+    </thead>
+    <tr th:each="curso : ${cursos}">
+        <td style="color: #000 !Important"; scope="row" th:text="${curso.id}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${curso.desc}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${curso.fecha}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${curso.nombre}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${curso.tutor}"></td>
+        <td >
+            <a th:href = "@{/cursos/edit/{id}(id=${curso.id})}"
+               class = "btn btn-primary">Update</a>
+            <a th:href = "@{/cursos/{id}(id=${curso.id})}"
+               class = "btn btn-danger">Delete</a>
+        </td>
+
+
+    </tr>
+    </tbody>
+
+    </tr>
+
+    </tfoot>
+</table>
+
+<button id="btn1">Añadir un nuevo Curso</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
+
+
+
+</body>
+</html>

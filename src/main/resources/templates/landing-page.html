@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pagina Principal</title>
+    <title>E-ntrenate. Landing Page.</title>
+
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/assets/img/favicon.ico" type="image/vnd.microsoft.icon" rel="icon" sizes="256x230">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-    * Template Name: OnePage - v4.7.0
-    * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/botones_login.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,18 +40,23 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <!-- <img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="10%" alt=""> -->
-            <h1 class="logo"><a href="landing-page.html">E-ntrenate</a></h1>
-            <h1 class="logo"><a href="Cursos.html">Cursos</a></h1>
+            <h1 class="logo"><a th:href="@{/}">E-ntrenate</a></h1>
+            <h1 class="logo"><a th:href="@{/cursos}">Cursos</a></h1>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+
+                    <li><a class="nav-link scrollto" th:href="@{/home}">Home</a></li>
                     <li><a class="nav-link scrollto" href="#clients">Aliados</a></li>
                     <li><a class="nav-link scrollto" href="#portfolio">Clases</a></li>
                     <li><a class="nav-link scrollto" href="#team">Tutores</a></li>
                     <li><a class="nav-link scrollto" href="#testimonials">Reseñas</a></li>
                     <li><a class="nav-link scrollto" href="#pricing">Precios</a></li>
-                    <li><a class="getstarted scrollto" href="FormRegister.html">Registro</a></li>
-                    <li><a class="getstarted scrollto" href="FormLogin.html">Login</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/registro}">Registro</a></li>
+                    <li><a type="hidden" class="getstarted scrollto" th:href="@{/login}">Login</a></li>
+
+
+
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -73,14 +77,15 @@
                         </div>
                     </div>
                     <div class="col-lg-6 pt-3 pt-lg-0 content">
-                        <center><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="70%" alt=""></center>
+                        <center><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="70%" alt=""></center>
                     </div>
                 </div>
+
                 <div class="row icon-boxes">
                     <h1 style="text-align:center">¿Qué hacemos?</h1>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Sesiones Grabadas</a></h4>
                             <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                         </div>
@@ -88,7 +93,7 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Guias de Trabajo</a></h4>
                             <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                         </div>
@@ -96,7 +101,7 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Actividades de refuerzo</a></h4>
                             <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                         </div>
@@ -104,7 +109,7 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Simulacros</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
@@ -112,14 +117,14 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Sesiones Orientadas</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Atención Cercana</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
@@ -127,14 +132,14 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Los mejores precios</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
                         <div class="icon-box">
-                            <div class="icon"><img src="assets/img/Logos/Isotipo Letras.png" class="img-fluid" width="25%" alt=""></div>
+                            <div class="icon"><img src="/assets/img/Logos/Isotipo%20Letras.png" class="img-fluid" width="25%" alt=""></div>
                             <h4 class="title"><a href="">Certificacion en nuestras clases</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
@@ -149,22 +154,22 @@
                     <h2>Aliados</h2>
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-1.png" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-2.png" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-3.png" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-4.png" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-5.png" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                        <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+                        <img src="/assets/img/clients/client-6.png" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -194,12 +199,12 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Icfes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-1.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-1.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Química</h4>
                                 <p></p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio.details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -208,12 +213,12 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Universitario">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-2.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-2.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Programación</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-2.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-2.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -222,11 +227,11 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Icfes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-3.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-3.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Biología</h4>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-3.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-3.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -235,11 +240,11 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Planes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-4.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-4.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Filosofía</h4>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-4.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-4.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -248,11 +253,11 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Icfes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-5.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-5.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Matemáticas</h4>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-5.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-5.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -261,11 +266,11 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Universitario">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-6.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-6.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Hábitos de Estudio</h4>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-6.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-6.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -274,11 +279,11 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Icfes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-7.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-7.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Ingles</h4>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-7.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-7.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -287,12 +292,12 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Icfes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-8.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-8.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Sociales</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-8.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-8.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -301,12 +306,12 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-Planes">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-9.png" class="img-fluid" alt="">
+                            <img src="/assets/img/portfolio/portfolio-9.png" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Introducción a las ciencias de la salud</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-9.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-9.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Volupt."><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -329,7 +334,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                             <div class="member-img">
-                                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                                <img src="/assets/img/team/team-1.jpg" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -346,7 +351,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
                         <div class="member">
                             <div class="member-img">
-                                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                                <img src="/assets/img/team/team-2.jpg" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -363,7 +368,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
                         <div class="member">
                             <div class="member-img">
-                                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                                <img src="/assets/img/team/team-3.jpg" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -380,7 +385,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
                             <div class="member-img">
-                                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                                <img src="/assets/img/team/team-4.jpg" class="img-fluid" alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -413,7 +418,7 @@
                                     Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                                <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                                 <h3>Saul Goodman</h3>
                                 <h4>452/500</h4>
                             </div>
@@ -425,7 +430,7 @@
                                     Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                <img src="/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                                 <h3>Sara Wilsson</h3>
                                 <h4>462/500</h4>
                             </div>
@@ -437,7 +442,7 @@
                                     Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                                 <h3>Jena Karlis</h3>
                                 <h4>474/500</h4>
                             </div>
@@ -449,7 +454,7 @@
                                     Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                                <img src="/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                                 <h3>Matt Brandon</h3>
                                 <h4>398/500</h4>
                             </div>
@@ -461,7 +466,7 @@
                                     Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                                <img src="/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                                 <h3>John Larson</h3>
                                 <h4>412/500</h4>
                             </div>
@@ -540,7 +545,7 @@
 
                 <div class="col-lg-6 col-md-6 footer-contact">
                     <h3>E-ntrenate</h3>
-                    <center><img src="assets/img/Logos/Logo.jpg" class="img-fluid" width="40%" alt=""></center>
+                    <center><img src="/assets/img/Logos/Logo.jpg" class="img-fluid" width="40%" alt=""></center>
                     <center><p>
                         <strong>Phone:</strong> +57 320 4192656<br>
                         <strong>Email:</strong> sarodriguezva@unal.edu.co<br>
@@ -586,14 +591,14 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     <!-- Vendor JS Files -->
     <!--<script src="assets/vendor/purecounter/purecounter.js"></script> -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </main>
 </body>
 

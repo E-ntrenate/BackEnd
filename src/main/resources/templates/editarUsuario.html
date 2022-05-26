@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Student Management System</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<br>
+<br>
+<div class = "container">
+  <div class = "row">
+    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center"> Update Usuario </h1>
+      <div class = "card-body">
+        <form th:action="@{/usuario/{id} (id=${usuario.id})}" th:object = "${usuario}" method="POST">
+          <div class ="form-group">
+            <label> Nombre </label>
+            <input
+                    type = "text"
+                    name = "nombre"
+                    th:field = "*{nombre}"
+                    class = "form-control"
+                    placeholder="Ingresar Nombre"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Apellido </label>
+            <input
+                    type = "text"
+                    name = "Apellido"
+                    th:field = "*{Apellido}"
+                    class = "form-control"
+                    placeholder="Ingresar Apellido"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Correo </label>
+            <input
+                    type = "text"
+                    name = "correo"
+                    th:field = "*{correo}"
+                    class = "form-control"
+                    placeholder="Ingresar Correo"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Ciudad </label>
+            <input
+                    type = "text"
+                    name = "ciudad"
+                    th:field = "*{ciudad}"
+                    class = "form-control"
+                    placeholder="Ingresar Ciudad"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Nickname </label>
+            <input
+                    type = "text"
+                    name = "nickName"
+                    th:field = "*{nickname}"
+                    class = "form-control"
+                    placeholder="Ingresar NickName"
+            />
+          </div>
+
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
