@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @Controller
 @RequestMapping
 public class UsuarioController {
@@ -17,14 +18,14 @@ public class UsuarioController {
     private UsuarioService usuarioService;
     @Autowired
     private CursoService cursoService;
-    @GetMapping("/")
+    @GetMapping("/usuarios/all")
     public String listarUsuarios(Model model){
 
         List<Usuario> ListadoUsuarios = usuarioService.listarUsuarios();
         model.addAttribute("Titulo","Lista de Juegos");
         model.addAttribute("usuarios", ListadoUsuarios);
 
-        return "/BuscadorUsuarios";
+        return "BuscadorUsuarios";
     }
     @GetMapping("/delete/{id}")
     public String eliminar(@PathVariable("id") Integer id){

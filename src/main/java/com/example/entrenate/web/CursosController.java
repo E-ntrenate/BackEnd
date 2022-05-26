@@ -4,10 +4,12 @@ import com.example.entrenate.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@CrossOrigin
 @Controller
 public class CursosController {
 
@@ -26,7 +28,7 @@ public class CursosController {
     @GetMapping("/cursos")
     public String listCursos(Model model){
         model.addAttribute("cursos", cursoService.getAllCursos());
-        return "redirect:/";
+        return "cursos";
     }
 
     @GetMapping("/cursos/edit/{id}")

@@ -3,11 +3,10 @@ package com.example.entrenate.web;
 import com.example.entrenate.service.UsuarioService;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin
 @Controller
 @RequestMapping("/registro")
 public class UsuarioRegistrationController {
@@ -24,7 +23,7 @@ public class UsuarioRegistrationController {
 
     @GetMapping
     public String mostrarRegistrationForm(){
-        return "registro";
+        return "FormRegister";
     }
 
     @PostMapping
