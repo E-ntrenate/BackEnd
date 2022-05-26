@@ -27,17 +27,26 @@
   <thead>
   <tr>
 
-    <th>Id Curso</th>
-    <th>Id Usuario</th>
+    <th>Id</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    <th>Nombre</th>
+    <th>Tutor</th>
 
   </tr>
 
   </thead>
   </thead>
-  <tr th:each="curso : ${listaCursosInscritos}">
-    <td style="color: #000 !Important"; scope="row" th:text="${curso.curso_id}"></td>
-    <td style="color: #000 !Important"; scope="row" th:text="${curso.usuario_id}"></td>
-
+  <tr th:each="curso : ${cursos_inscritos}">
+    <td style="color: #000 !Important"; scope="row" th:text="${curso.id}"></td>
+    <td style="color: #000 !Important"; scope="row" th:text="${curso.desc}"></td>
+    <td style="color: #000 !Important"; scope="row" th:text="${curso.fecha}"></td>
+    <td style="color: #000 !Important"; scope="row" th:text="${curso.nombre}"></td>
+    <td style="color: #000 !Important"; scope="row" th:text="${curso.tutor}"></td>
+    <td >
+      <a th:href = "@{/cursos/{id}(id=${curso.id})}"
+         class = "btn btn-danger">Delete</a>
+    </td>
 
 
   </tr>

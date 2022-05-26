@@ -1,10 +1,8 @@
 package com.example.entrenate.web;
 
 import com.example.entrenate.model.Cursos;
-import com.example.entrenate.model.Cursos_Inscritos;
 import com.example.entrenate.model.Usuario;
 import com.example.entrenate.service.CursoService;
-import com.example.entrenate.service.CursosInscritosService;
 import com.example.entrenate.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -23,8 +20,6 @@ public class UsuarioController {
     private UsuarioService usuarioService;
     @Autowired
     private CursoService cursoService;
-    @Autowired
-    private CursosInscritosService cursosInscritosService;
     @GetMapping("/")
     public String listarUsuarios(Model model){
 
@@ -43,30 +38,19 @@ public class UsuarioController {
 
     @GetMapping("/usuario/cursosInscritos/{id}")
     public String mostrarCursosInscritos(@PathVariable("id") Integer id, Model model){
-//        List<Cursos_Inscritos> cursos_inscritos = cursosInscritosService.getAllCursosInscritos();
-        List<Cursos> cursos_inscritos = cursoService.getAllCursos();
-        for (Cursos i: cursos_inscritos){
+        List<Cursos> cursos = cursoService.getAllCursos();
+        List<Cursos> cursos_inscritos = new ArrayList<>();
+        for (Cursos i: cursos){
             Collection<Usuario> l = i.getUsuarios();
-            System.out.println("Curso: "+ i.getId());
             for(Usuario j: l){
-                System.out.println("UsuarioId: "+j.getId());
+                if(id == j.getId()){
+                    cursos_inscritos.add(i);
+                }
             }
         }
         List<Cursos> listaCursosInscritos = new ArrayList<>();
-/*
-        for(Cursos_Inscritos i: cursos_inscritos){
-            System.out.println("Id: " + id);
-            System.out.println("CursoUsuarioId: " + i.getUsuario_id());
-            int id2 = i.getUsuario_id();
-            if(id == id2){
-                System.out.println("CursoId: " + id2);
-                listaCursosInscritos.add(cursoService.getCursoById(id2));
-            }
-        }
-        System.out.println(listaCursosInscritos);
-*/
-        model.addAttribute("listaCursosInscritos", listaCursosInscritos);
-        //model.addAttribute("listaCursosInscritos", cursos_inscritos);
+
+        model.addAttribute("cursos_inscritos", cursos_inscritos);
         return "cursosInscritos";
     }
 
