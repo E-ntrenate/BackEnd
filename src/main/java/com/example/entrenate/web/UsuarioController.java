@@ -1,5 +1,6 @@
 package com.example.entrenate.web;
 
+import com.example.entrenate.model.Cursos;
 import com.example.entrenate.model.Usuario;
 import com.example.entrenate.service.CursoService;
 import com.example.entrenate.service.UsuarioService;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @CrossOrigin
@@ -36,7 +39,19 @@ public class UsuarioController {
 
     @GetMapping("/usuario/cursosInscritos/{id}")
     public String mostrarCursosInscritos(@PathVariable("id") Integer id, Model model){
-        model.addAttribute("usuario", usuarioService.getUsuarioById(id));
+        List<Cursos> cursos = cursoService.getAllCursos();
+        List<Cursos> cursos_inscritos = new ArrayList<>();
+        for (Cursos i: cursos){
+            Collection<Usuario> l = i.getUsuarios();
+            for(Usuario j: l){
+                if(id == j.getId()){
+                    cursos_inscritos.add(i);
+                }
+            }
+        }
+        List<Cursos> listaCursosInscritos = new ArrayList<>();
+
+        model.addAttribute("cursos_inscritos", cursos_inscritos);
         return "cursosInscritos";
     }
 
