@@ -34,7 +34,7 @@ public class UsuarioController {
     public String eliminar(@PathVariable("id") Integer id){
         usuarioService.eliminar(id);
         System.out.println("Registro Eliminado con Exito!");
-        return "redirect:/cursos";
+        return "redirect:/usuarios/all";
     }
 
     @GetMapping("/usuario/cursosInscritos/{id}")
@@ -87,7 +87,7 @@ public class UsuarioController {
 
         // save updated usuario object
         usuarioService.updateUsuario(existingUsuario);
-        return "redirect:/";
+        return "redirect:/usuarios/all";
     }
 
 }

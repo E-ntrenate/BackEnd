@@ -23,7 +23,7 @@
 <br>
 </div >
 <ul class="nav navbar-nav">
-    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a> </li>
+    <li><a class="getstarted scrollto" th:href="@{/logout}">Logout</a></li>
 </ul>
 </div>
 <h1> Usuarios </h1>
@@ -60,8 +60,8 @@
         <td style="color: #000 !Important"; scope="row" th:text="${ju.tipoIdentidad}"></td>
         <td style="color: #000 !Important"; scope="row" th:text="${ju.fechaNacimiento}"></td>
         <td >
-            <a th:href = "@{/usuario/cursosInscritos/{id}(id=${ju.id})}"
-               class = "btn btn-primary">Ver Cursos Inscrito</a>
+           <!-- <a th:href = "@{/usuario/cursosInscritos/{id}(id=${ju.id})}"
+               class = "btn btn-primary">Ver Cursos Inscrito</a>-->
             <a th:href = "@{/usuario/edit/{id}(id=${ju.id})}"
                class = "btn btn-primary">Editar</a>
             <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${ju.id}"
@@ -78,11 +78,11 @@
     </tfoot>
 </table>
 
-<button id="btn1">Añadir un nuevo Usuario</button>
+<!--<button id="btn1">Añadir un nuevo Usuario</button>-->
 
-    <a class="btn btn-danger btn-sm" th:href = "@{/usuario/cursos}"
+  <!--  <a class="btn btn-danger btn-sm" th:href = "@{/usuario/cursos}"
        th:text="'Ver Cursos Diponibles'" title="Ver Cursos Diponibles">
-    </a>
+    </a> -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
