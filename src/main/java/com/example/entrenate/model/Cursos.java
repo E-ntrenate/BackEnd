@@ -90,5 +90,27 @@ public class Cursos {
         this.tutor = tutor;
     }
 
+    public Collection<Usuario> getUsuarios() {
+        return usuarios;
+    }
 
+    public void setUsuarios(Collection<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Contenido_Cursos getContenido_cursos() {
+        return contenido_cursos;
+    }
+
+    public void setContenido_cursos(Contenido_Cursos contenido_cursos) {
+        this.contenido_cursos = contenido_cursos;
+    }
+
+    public Categoria_Cursos getCategoria_cursos() {
+        return categoria_cursos;
+    }
+
+    public void setCategoria_cursos(Categoria_Cursos categoria_cursos) {
+        this.categoria_cursos = categoria_cursos;
+    }
 }
