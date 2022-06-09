@@ -1,11 +1,14 @@
 package com.example.entrenate.config;
 
-import org.thymeleaf.expression.Sets;
+
 
 import java.util.Set;
 import static com.example.entrenate.config.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
+    STUDENT,
+    ADMIN;
+    /*
     STUDENT(Sets.newHashSet(COURSE_READ)),
     ADMIN(Sets.newHashSet(COURSE_READ, COURSE_WRITE, STUDENT_READ, STUDENT_WRITE));
     private final Set<ApplicationUserPermission> permissions;
@@ -17,4 +20,6 @@ public enum ApplicationUserRole {
     public Set<ApplicationUserPermission> getPermissions() {
         return permissions;
     }
+
+     */
 }
