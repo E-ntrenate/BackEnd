@@ -28,7 +28,7 @@ public class UsuarioRegistrationController {
     public String mostrarRegistrationForm(){
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "FormRegister";
+            return "registro";
         }
         return "redirect:/";
     }

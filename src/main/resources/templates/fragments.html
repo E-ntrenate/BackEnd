@@ -6,8 +6,8 @@
 
 <!-- Fragment #1 : Header files contains css references -->
 <head th:fragment="headerfiles">
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
 
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -119,7 +119,7 @@
     </div>
 </footer><!-- End Footer -->
 
-<!-- Fragment #4 : Js files and loader -->
+<!-- Fragment #4 : Js files and preloader -->
 <div th:fragment="jsfiles">
     <div id="preloader"></div>
     <a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
@@ -134,5 +134,21 @@
     <!-- Template Main JS File -->
     <script th:src="@{~/assets/js/main.js}"></script>
 </div>
+
+<!-- Fragment #5 : JS Loader -->
+<script th:fragment="loadcode">
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach(input => {
+        input.onfocus = () => {
+            input.nextElementSibling.classList.add("top");
+        }
+        input.onblur = () => {
+            input.value = input.value.trim()
+            if (input.value.trim().length == 0) {
+                input.nextElementSibling.classList.remove("top");
+            }
+        }
+    });
+</script>
 </body>
 </html>
