@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Autorización</title>
+    <th:block th:include="fragments.html :: headerfiles"></th:block>
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" th:href="@{~/assets/css/Login.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/normalize.css}">
+</head>
+
+<body>
+<header th:insert="fragments.html :: header"></header>
+
+<main id="main">
+    <!-- ======= Breadcrumbs ====== -->
+    <section class="d-flex align-items-center" id="hero">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+                <div class="login-data">
+                    <form class="login-form" method="post" th:action="@{/login}">
+                        <div class="row p-4 justify-content-center pd-4">
+                            <div class="container border p-3 rounded-3">
+                                <legend class="text-center border-bottom" style="color:#1B5BAC">Inicio de Sesión
+                                </legend>
+                                <div class="alert alert-error" th:if="${param.error}">
+                                    Los datos no son correctos.
+                                </div>
+                                <div class="alert alert-success" th:if="${param.logout}">
+                                    Te has desconectado.
+                                </div>
+                                <div class="row p-5 py-1">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-fill" for="username">
+                                                <input class="form-control" id="username" name="username" required
+                                                       size="50%" type="text"/>
+                                                <span class="input-label">Nombre de Usuario</span>
+                                                <i class="fas fa-envelope"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row p-5 py-1">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-fill" for="password">
+                                                <input class="form-control" id="password" name="password"
+                                                       required size="50%" type="password"/>
+                                                <span class="input-label">Contraseña</span>
+                                                <i class="fas fa-lock"></i>
+                                                <!-- <a href="#" style="text-align:left">¿Olvidaste tu contraseña?</a> -->
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-check-input" id="remember-me" name="remember-me"
+                                               type="checkbox">
+                                        <label class="input-label" for="remember-me">Recuérdame</label>
+                                    </div>
+                                    <input class="btn-login" type="submit" value="Iniciar Sesión"/>
+                                    <a style="text-align:right" th:href="@{/registro}">¿Necesitas una Cuenta?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 pt-5 pt-lg-0 content">
+                    <center><img alt="" class="img-fluid" th:src="@{~/assets/img/Login/LoginPerson.png}" width="100%"/>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <th:block th:include="fragments.html :: jsfiles"></th:block>
+            <!-- Template Main JS File -->
+            <script crossorigin="anonymous"
+                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+
+        <script>
+            const inputs = document.querySelectorAll("input");
+            inputs.forEach(input => {
+                input.onfocus = () => {
+                    input.nextElementSibling.classList.add("top");
+                }
+                input.onblur = () => {
+                    input.value = input.value.trim()
+                    if (input.value.trim().length == 0) {
+                        input.nextElementSibling.classList.remove("top");
+                    }
+                }
+            });
+        </script>
+    </section><!-- End Hero -->
+</main>
+</body>
+</html>
+    

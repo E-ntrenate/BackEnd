@@ -1,4 +1,4 @@
-package com.example.entrenate.config;
+package com.example.entrenate.security;
 
 public enum ApplicationUserPermission {
     STUDENT_READ("student:read"),

@@ -1,4 +1,4 @@
-package com.example.entrenate.service;
+package com.example.entrenate.auth;
 
 import com.example.entrenate.model.Rol;
 import com.example.entrenate.model.Usuario;
@@ -6,28 +6,48 @@ import com.example.entrenate.repository.UsuarioRepository;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.example.entrenate.security.ApplicationUserRole.*;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
+    //INYECCIÓN DE DEPENDENCIAS//
+    private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-    @Autowired
-    private BCryptPasswordEncoder encoder;
+    //Obtiene el usuario por el nickname dado.
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByNickname(username);
+
+        if (usuario == null){
+            throw new UsernameNotFoundException("Usuario o contraseña inválidos.");
+        }
+
+        return new UsuarioPrincipal(
+                usuario.getNickname(),
+                usuario.getPassword(),
+                ESTUDIANTE.getGrantedAuthorities(),
+                true,
+                true,
+                true,
+                true
+        );
+    }
 
     //Recibe los datos del cliente por el DTO y los persiste en la Base de Datos.
     @Override
@@ -38,20 +58,20 @@ public class UsuarioServiceImpl implements UsuarioService{
                 registroDto.getNickname(),
                 registroDto.getDocumento(),
                 registroDto.getCorreo(),
-                encoder.encode(registroDto.getPassword()),
+                passwordEncoder.encode(registroDto.getPassword()),
                 registroDto.getEdad(),
                 registroDto.getCiudad(),
                 registroDto.getNumeroIdentidad(),
                 registroDto.getTipoIdentidad(),
                 registroDto.getFechaNacimiento(),
-                Arrays.asList(new Rol("ROL_USUARIO"))
+                Arrays.asList(new Rol(ESTUDIANTE.name()))
         );
         return usuarioRepository.save(usuario);
     }
 
     @Override
     public List<Usuario> listarUsuarios() {
-        return (List<Usuario>) usuarioRepository.findAll();
+        return usuarioRepository.findAll();
     }
 
     @Override
@@ -70,26 +90,5 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Usuario getUsuarioById(Integer id) {
         return usuarioRepository.findById(id).get();
-    }
-
-
-    //Obtiene el usuario por el nickname dado.
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByNickname(username);
-
-        if (usuario == null){
-            throw new UsernameNotFoundException("Usuario o contraseña inválidos.");
-        }
-
-        return new User(
-                usuario.getNickname(),
-                usuario.getPassword(),
-                mapRolesToAuthorities(usuario.getRoles()));
-    }
-
-    //Mapea los roles del usuario a permisos.
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Rol> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
 }

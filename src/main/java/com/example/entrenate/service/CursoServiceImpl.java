@@ -11,10 +11,9 @@ import java.util.List;
 @Service
 public class CursoServiceImpl implements CursoService{
 
-    private CursoRepository cursoRepository;
+    private final CursoRepository cursoRepository;
 
     public CursoServiceImpl(CursoRepository cursoRepository) {
-        super();
         this.cursoRepository = cursoRepository;
     }
 

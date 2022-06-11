@@ -15,7 +15,6 @@ public class CursosController {
     private CursoService cursoService;
 
     public CursosController(CursoService cursoService) {
-        super();
         this.cursoService = cursoService;
     }
     @GetMapping("/cursos/{id}")
