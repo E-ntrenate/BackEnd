@@ -1,4 +1,4 @@
-package com.example.entrenate.web;
+package com.example.entrenate.web.usuarios;
 
 import com.example.entrenate.auth.UsuarioService;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @Controller
 @RequestMapping("/registro")
-public class UsuarioRegistrationController {
+public class RegistrationController {
     private final UsuarioService usuarioService;
 
-    public UsuarioRegistrationController(UsuarioService usuarioService) {
+    public RegistrationController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 
@@ -28,7 +28,7 @@ public class UsuarioRegistrationController {
     public String mostrarRegistrationForm(){
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "registro";
+            return "principal/registro";
         }
         return "redirect:/";
     }

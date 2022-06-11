@@ -1,7 +1,6 @@
-package com.example.entrenate.web;
+package com.example.entrenate.web.cursos;
 
-import com.example.entrenate.model.Cursos;
-import com.example.entrenate.model.Usuario;
+import com.example.entrenate.model.curso.Curso;
 import com.example.entrenate.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +34,8 @@ public class CursosController {
     }
 
     @PostMapping("/cursos/{id}")
-    public String updateCurso(@PathVariable("id") Integer id, @ModelAttribute("cursos") Cursos curso, Model model){
-        Cursos existingCurso = cursoService.getCursoById(id);
+    public String updateCurso(@PathVariable("id") Integer id, @ModelAttribute("cursos") Curso curso, Model model){
+        Curso existingCurso = cursoService.getCursoById(id);
         existingCurso.setNombre(curso.getNombre());
         existingCurso.setDesc(curso.getDesc());
         existingCurso.setTutor(curso.getTutor());

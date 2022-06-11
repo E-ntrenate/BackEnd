@@ -1,4 +1,4 @@
-package com.example.entrenate.model;
+package com.example.entrenate.model.curso;
 
 import lombok.*;
 
@@ -12,13 +12,13 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria_Cursos {
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
 
-    public Categoria_Cursos(String nombre) {
+    public Categoria(String nombre) {
         this.nombre = nombre;
     }
 }

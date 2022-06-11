@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String landing(){
-        return "landing";
+        return "principal/landing";
     }
 
     @GetMapping("/login")
@@ -20,7 +20,7 @@ public class MainController {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //Si ya está autenticado, se redirige a la página principal.
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "login";
+            return "principal/login";
         }
 
         return "redirect:/";
@@ -28,7 +28,7 @@ public class MainController {
 
     @GetMapping("/home")
     public String home(){
-        return "Home";
+        return "principal/Home";
     }
 
     @GetMapping("/buscadorusuarios")

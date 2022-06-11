@@ -1,6 +1,6 @@
 package com.example.entrenate.service;
 
-import com.example.entrenate.model.Cursos;
+import com.example.entrenate.model.curso.Curso;
 import com.example.entrenate.repository.CursoRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,22 +18,22 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public List<Cursos> getAllCursos() {
+    public List<Curso> getAllCursos() {
         return cursoRepository.findAll();
     }
 
     @Override
-    public Cursos saveCurso(Cursos curso) {
+    public Curso saveCurso(Curso curso) {
         return cursoRepository.save(curso);
     }
 
     @Override
-    public Cursos getCursoById(Integer id) {
+    public Curso getCursoById(Integer id) {
         return cursoRepository.findById(id).get();
     }
 
     @Override
-    public Cursos updateCurso(Cursos curso) {
+    public Curso updateCurso(Curso curso) {
         return cursoRepository.save(curso);
     }
 

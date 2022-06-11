@@ -1,4 +1,4 @@
-package com.example.entrenate.model;
+package com.example.entrenate.model.curso;
 
 import lombok.*;
 
@@ -9,13 +9,13 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contenido_Cursos {
+public class Contenido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String link;
 
-    public Contenido_Cursos(String link) {
+    public Contenido(String link) {
         this.link = link;
     }
 }

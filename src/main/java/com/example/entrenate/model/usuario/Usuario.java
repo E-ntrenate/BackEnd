@@ -1,4 +1,4 @@
-package com.example.entrenate.model;
+package com.example.entrenate.model.usuario;
 
 import lombok.*;
 

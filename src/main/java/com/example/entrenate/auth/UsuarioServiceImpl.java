@@ -1,7 +1,7 @@
 package com.example.entrenate.auth;
 
-import com.example.entrenate.model.Rol;
-import com.example.entrenate.model.Usuario;
+import com.example.entrenate.model.usuario.Rol;
+import com.example.entrenate.model.usuario.Usuario;
 import com.example.entrenate.repository.UsuarioRepository;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
