@@ -58,7 +58,7 @@ public class Usuario {
     private Collection<Rol> roles;
 
     //Constructor sin Id.
-    public Usuario(String nombre, String apellido, String nickname, File documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, File fotoPerfil, Collection<Rol> roles) {
+    public Usuario(String nombre, String apellido, String nickname, File documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;
@@ -70,7 +70,6 @@ public class Usuario {
         this.numeroIdentidad = numeroIdentidad;
         this.tipoIdentidad = tipoIdentidad;
         this.fechaNacimiento = fechaNacimiento;
-        this.fotoPerfil = fotoPerfil;
         this.roles = roles;
     }
 }
