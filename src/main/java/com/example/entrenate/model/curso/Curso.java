@@ -28,6 +28,28 @@ public class Curso {
     private String fecha;
     private String tutor;
 
+    /*
+    ID propia
+    nombre
+    foto principal
+    descripción corta
+    Reseña larga
+    Video presentacional
+    fecha de creación
+    Tutor (usuario.nombre)
+    calificación (promedio)
+        usuario
+        puntaje
+        reseña
+    precio
+    2 fotos presentacionales
+    Clases lista
+        Nombre
+        Descripción
+        Link
+        Duración
+    tiempo total
+     */
     @Lob
     private MultipartFile photo;
 
