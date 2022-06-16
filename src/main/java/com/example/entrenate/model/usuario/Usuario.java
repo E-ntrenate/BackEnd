@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.entrenate.model.curso.Curso;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -70,6 +72,9 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id"))
     private Collection<Rol> roles;
+
+    @OneToMany(mappedBy = "tutor")
+    private Collection<Curso> cursosTutora;
 
     //Constructor sin Id.
     public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {

@@ -24,34 +24,43 @@ public class Curso {
     @Length(max = 100)
     private String desc;
 
-    private String detalles;
+    private String reseña;
+
+    private String urlTrailer;
     private String fecha;
-    private String tutor;
+    private float precio;
+    private float duracion;
 
     /*
-    ID propia
-    nombre
-    foto principal
-    descripción corta
-    Reseña larga
-    Video presentacional
-    fecha de creación
-    Tutor (usuario.nombre)
+    ID propia -
+    nombre -
+    foto principal -
+    descripción corta -
+    Reseña larga -
+    Video presentacional -
+    fecha de creación -
+    Tutor (usuario.nombre) -
     calificación (promedio)
         usuario
         puntaje
         reseña
-    precio
-    2 fotos presentacionales
+    precio -
+    2 fotos presentacionales -
     Clases lista
         Nombre
         Descripción
         Link
         Duración
-    tiempo total
+    tiempo total -
      */
     @Lob
     private MultipartFile photo;
+
+    @Lob
+    private MultipartFile galleryfront;
+
+    @Lob
+    private MultipartFile galleryback;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -62,6 +71,10 @@ public class Curso {
                     name = "usuario_id", referencedColumnName = "id"))
     private Collection<Usuario> usuarios;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tutor", nullable = false)
+    private Usuario tutor;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contenidoCurso")
     private Contenido contenido;
@@ -70,7 +83,7 @@ public class Curso {
     @JoinColumn(name = "id_categoriaCursos")
     private Categoria categoria;
 
-    public Curso(String nombre, String desc, String fecha, String tutor, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
+    public Curso(String nombre, String desc, String fecha, Usuario tutor, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
         this.nombre = nombre;
         this.desc = desc;
         this.fecha = fecha;
