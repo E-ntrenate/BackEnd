@@ -31,7 +31,8 @@
             <div class="login-data">
                 <div class=" abs-center p-4 align-items-center">
                     <div class="container border p-6 align-self-center" style="border-color: #1B5BAC;">
-                        <form class="login-form" method="POST" th:action="@{/registro}" th:object="${usuario}">
+                        <form class="login-form" enctype="multipart/form-data" method="POST" th:action="@{/registro}"
+                              th:object="${usuario}">
                             <legend class="border-bottom mb-2 text-center" style="color:#1B5BAC">Registrate</legend>
 
                             <div class="alert alert-success" th:if="${param.success}">
@@ -45,6 +46,7 @@
                                             <input class="form-control" id="nombre" name="Nombre" th:field="*{nombre}"
                                                    type="text"/>
                                             <span class="input-label">Nombre</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el Nombre</span>
                                             <i class="fa-solid fa-user"></i>
                                         </label>
                                     </div>
@@ -71,6 +73,7 @@
                                                    th:field="*{nickname}"
                                                    type="text"/>
                                             <span class="input-label">Usuario</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Error en el nickname</span>
                                             <i class="fa-solid fa-user-secret"></i>
                                         </label>
                                     </div>
@@ -84,6 +87,7 @@
                                             <input class="form-control" id="ciudad" name="ciudad" th:field="*{ciudad}"
                                                    type="text"/>
                                             <span class="input-label">Ciudad</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}">Error en la ciudad</span>
                                             <i class="fa-solid fa-building"></i>
                                         </label>
                                     </div>
@@ -107,11 +111,11 @@
                                         <label class="input-fill">
                                             <div class="select">
                                                 <select aria-label="Default select example" class="form-select"
-                                                        name="type_id">
-                                                    <option selected>CC</option>
-                                                    <option value="1">CE</option>
-                                                    <option value="2">TI</option>
-                                                    <option value="3">PP</option>
+                                                        name="type_id" th:field="*{tipoIdentidad}">
+                                                    <option th:value="'CC'" th:text="CC"></option>
+                                                    <option th:value="'CE'" th:text="CE"></option>
+                                                    <option th:value="'TI'" th:text="TI"></option>
+                                                    <option th:value="'PP'" th:text="PP"></option>
                                                 </select>
                                             </div>
                                         </label>
@@ -124,6 +128,7 @@
                                             <input class="form-control" id="numeroIdentidad" name="numeroIdentidad"
                                                    th:field="*{numeroIdentidad}" type="text"/>
                                             <span class="input-label">Número ID</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('numeroIdentidad')}" th:errors="*{numeroIdentidad}">Error en el numeroIdentidad</span>
                                             <i class="fa-solid fa-id-card"></i>
                                         </label>
                                     </div>
@@ -137,7 +142,8 @@
                                             <i class="fas fa-file"></i>
                                             Adjuntar ID
                                             <label for="btn-file"></label>
-                                            <input id="btn-file" type="file">
+                                            <input accept="image/png, image/jpeg, image/svg" id="btn-file" name="documento"
+                                                   th:field="*{documento}" type="file">
                                         </label>
                                     </div>
                                 </div>
@@ -147,7 +153,8 @@
                                         <label class="input-fill" for="correo">
                                             <input class="form-control" id="correo" name="correo" th:field="*{correo}"
                                                    type="email"/>
-                                            <span class="input-label">Correo Electronico</span>
+                                            <span class="input-label">Correo Electrónico</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Error en el correo</span>
                                             <i class="fa-solid fa-envelope"></i>
                                         </label>
                                     </div>
@@ -162,6 +169,7 @@
                                                    th:field="*{password}"
                                                    type="password"/>
                                             <span class="input-label">Contraseña</span>
+                                            <span class="input-label" th:if="${#fields.hasErrors('password')}" th:errors="*{nombre}">Error en el password</span>
                                             <i class="fas fa-lock"></i>
                                         </label>
                                     </div>
@@ -189,7 +197,7 @@
     <div>
         <th:block th:include="fragments.html :: jsfiles"></th:block>
         <!-- Vendor JS Files -->
-        <script src="/assets/vendor/purecounter/purecounter.js"></script>
+        <script th:src="@{~/assets/vendor/purecounter/purecounter.js}"></script>
 
         <!-- Template Main JS File -->
         <script crossorigin="anonymous"

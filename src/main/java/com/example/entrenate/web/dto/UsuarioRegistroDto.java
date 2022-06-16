@@ -1,12 +1,12 @@
 package com.example.entrenate.web.dto;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 public class UsuarioRegistroDto {
     private String nombre;
     private String apellido;
     private String nickname;
-    private File documento;
+    private MultipartFile documento;
     private String correo;
     private String password;
     private byte edad;
@@ -14,12 +14,13 @@ public class UsuarioRegistroDto {
     private long numeroIdentidad;
     private String tipoIdentidad;
     private String fechaNacimiento;
+    private MultipartFile fotoPerfil;
 
     public UsuarioRegistroDto() {
 
     }
 
-    public UsuarioRegistroDto(String nombre, String apellido, String nickname, File documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento) {
+    public UsuarioRegistroDto(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, MultipartFile fotoPerfil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;
@@ -31,6 +32,7 @@ public class UsuarioRegistroDto {
         this.numeroIdentidad = numeroIdentidad;
         this.tipoIdentidad = tipoIdentidad;
         this.fechaNacimiento = fechaNacimiento;
+        this.fotoPerfil = fotoPerfil;
     }
 
     public String getNombre() {
@@ -57,11 +59,11 @@ public class UsuarioRegistroDto {
         this.nickname = nickname;
     }
 
-    public File getDocumento() {
+    public MultipartFile getDocumento() {
         return documento;
     }
 
-    public void setDocumento(File documento) {
+    public void setDocumento(MultipartFile documento) {
         this.documento = documento;
     }
 
@@ -119,5 +121,13 @@ public class UsuarioRegistroDto {
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public MultipartFile getFotoPerfil() {
+        return this.fotoPerfil;
+    }
+
+    public void setFotoPerfil(final MultipartFile fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 }

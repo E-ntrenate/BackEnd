@@ -3,8 +3,6 @@
 <head>
     <title>E-ntrenate. Landing Page.</title>
     <th:block th:include="fragments.html :: headerfiles"></th:block>
-    <!-- Template Main CSS File -->
-    <link th:href="@{~/assets/css/botones_login.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -497,67 +495,9 @@
             </div>
         </div>
     </section><!-- End Testimonials Section -->
+
     <!-- ======= Pricing Section ======= -->
-    <section class="pricing" id="pricing">
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>Precios</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
-                    <div class="box">
-                        <h3>Gratis</h3>
-                        <h4><sup>$</sup>0<span> / Mes</span></h4>
-                        <ul>
-                            <li>Acceso Limitado a cursos</li>
-                            <li>Acceso Limitado Material interactivo</li>
-                            <li class="na">Acceso a Pruebas y examenes</li>
-                            <li class="na">Apredinzaje con acompañamiento de nuestros tutores</li>
-                            <li class="na">0 Anuncios</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a class="btn-buy" href="#">!Compralo ahora¡</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="box featured">
-                        <h3>Business</h3>
-                        <h4><sup>$</sup>19<span> / month</span></h4>
-                        <ul>
-                            <li>Acceso ilimitado a cursos</li>
-                            <li>Acceso ilimitado Material interactivo</li>
-                            <li>Acceso a Pruebas y examenes</li>
-                            <li class="na">Apredinzaje con acompañamiento de nuestros tutores</li>
-                            <li class="na">0 Anuncios</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a class="btn-buy" href="#">!Compralo ahora¡</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="box">
-                        <h3>Developer</h3>
-                        <h4><sup>$</sup>29<span> / month</span></h4>
-                        <ul>
-                            <li>Acceso ilimitado a cursos</li>
-                            <li>Acceso ilimitado Material interactivo</li>
-                            <li>Acceso a Pruebas y examenes</li>
-                            <li>Apredinzaje con acompañamiento de nuestros tutores</li>
-                            <li>0 Anuncios</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a class="btn-buy" href="#">!Compralo ahora¡</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- End Pricing Section -->
+    <section th:insert="fragments.html :: pricing"></section>
 
     <footer th:insert="fragments.html :: footer"></footer>
     <div th:insert="fragments.html :: jsfiles"></div>

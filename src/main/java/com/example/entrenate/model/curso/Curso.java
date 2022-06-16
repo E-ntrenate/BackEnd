@@ -2,6 +2,8 @@ package com.example.entrenate.model.curso;
 
 import com.example.entrenate.model.usuario.Usuario;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -18,9 +20,16 @@ public class Curso {
 
     @Column(nullable = false, unique = true)
     private String nombre;
+
+    @Length(max = 100)
     private String desc;
+
+    private String detalles;
     private String fecha;
     private String tutor;
+
+    @Lob
+    private MultipartFile photo;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(

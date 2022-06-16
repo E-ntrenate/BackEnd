@@ -1,9 +1,13 @@
 package com.example.entrenate.model.usuario;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.io.File;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Collection;
 
 @Entity
@@ -17,28 +21,37 @@ public class Usuario {
     private int id;
 
     @Column(nullable = false)
+    @Length(min = 3, max = 50)
     private String nombre;
 
     private String apellido;
 
     @Column(nullable = false, unique = true)
+    @Length(min = 4)
     private String nickname;
 
-    private File documento;
+    @Lob
+    private MultipartFile documento;
 
     @Column(nullable = false, unique = true)
+    @Email
     private String correo;
 
     @Column(nullable = false, unique = true, length = 64)
+    @Length(min = 8)
     private String password;
 
     @Column(nullable = false)
+    @Min(value = 12)
+    @Max(value = 100)
     private byte edad;
 
     @Column(nullable = false)
+    @Length(min = 3)
     private String ciudad;
 
     @Column(nullable = false, unique = true)
+    @Length(min = 8, max = 12)
     private long numeroIdentidad;
 
     private String tipoIdentidad;
@@ -46,7 +59,8 @@ public class Usuario {
     @Column(nullable = false)
     private String fechaNacimiento;
 
-    private File fotoPerfil;
+    @Lob
+    private MultipartFile fotoPerfil;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -58,7 +72,7 @@ public class Usuario {
     private Collection<Rol> roles;
 
     //Constructor sin Id.
-    public Usuario(String nombre, String apellido, String nickname, File documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
+    public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;

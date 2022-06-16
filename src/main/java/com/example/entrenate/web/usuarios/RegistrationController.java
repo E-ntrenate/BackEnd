@@ -6,7 +6,10 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @CrossOrigin
@@ -34,8 +37,14 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String registrarCuentaUsuario(@ModelAttribute("usuario") UsuarioRegistroDto registroDto){
+    public String registrarCuentaUsuario(@Valid @ModelAttribute("usuario") UsuarioRegistroDto registroDto,
+                                         BindingResult bindingResult){
         usuarioService.save(registroDto);
-        return "redirect:/registro?success";
+
+        if (bindingResult.hasErrors()){
+            return "redirect:/registro?error";
+        } else {
+            return "redirect:/registro?success";
+        }
     }
 }
