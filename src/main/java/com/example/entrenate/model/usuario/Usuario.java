@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -71,13 +72,13 @@ public class Usuario {
                     name = "usuario_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id"))
-    private Collection<Rol> roles;
+    private Set<Rol> roles;
 
     @OneToMany(mappedBy = "tutor")
-    private Collection<Curso> cursosTutora;
+    private Set<Curso> cursosTutora;
 
     //Constructor sin Id.
-    public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
+    public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Set<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static com.example.entrenate.security.ApplicationUserRole.*;
 
@@ -64,7 +65,9 @@ public class UsuarioServiceImpl implements UsuarioService{
                 registroDto.getNumeroIdentidad(),
                 registroDto.getTipoIdentidad(),
                 registroDto.getFechaNacimiento(),
-                Arrays.asList(new Rol(ESTUDIANTE.name()))
+                (Set<Rol>) new Rol(ESTUDIANTE.name())
+                //Set<new rol(ESTUDIANTE.name())>
+                //Arrays.asList(new Rol(ESTUDIANTE.name()))
         );
         return usuarioRepository.save(usuario);
     }
