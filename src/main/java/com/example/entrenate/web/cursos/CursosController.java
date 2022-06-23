@@ -38,7 +38,7 @@ public class CursosController {
         Curso existingCurso = cursoService.getCursoById(id);
         existingCurso.setNombre(curso.getNombre());
         existingCurso.setDesc(curso.getDesc());
-        existingCurso.setTutor(curso.getTutor());
+        //existingCurso.setTutor(curso.getTutor());
         existingCurso.setFecha(curso.getFecha());
 
         // save updated curso object

@@ -71,9 +71,11 @@ public class Curso {
                     name = "usuario_id", referencedColumnName = "id"))
     private Collection<Usuario> usuarios;
 
+    /*
     @ManyToOne
     @JoinColumn(name = "id_tutor", nullable = false)
     private Usuario tutor;
+    */
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contenidoCurso")
@@ -83,11 +85,10 @@ public class Curso {
     @JoinColumn(name = "id_categoriaCursos")
     private Categoria categoria;
 
-    public Curso(String nombre, String desc, String fecha, Usuario tutor, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
+    public Curso(String nombre, String desc, String fecha, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
         this.nombre = nombre;
         this.desc = desc;
         this.fecha = fecha;
-        this.tutor = tutor;
         this.usuarios = usuarios;
         this.contenido = contenido;
         this.categoria = categoria;
