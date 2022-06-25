@@ -14,6 +14,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Curso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -21,76 +22,71 @@ public class Curso {
     @Column(nullable = false, unique = true)
     private String nombre;
 
-    @Length(max = 100)
-    private String desc;
-
-    private String reseña;
-
-    private String urlTrailer;
-    private String fecha;
-    private float precio;
-    private float duracion;
-
-    /*
-    ID propia -
-    nombre -
-    foto principal -
-    descripción corta -
-    Reseña larga -
-    Video presentacional -
-    fecha de creación -
-    Tutor (usuario.nombre) -
-    calificación (promedio)
-        usuario
-        puntaje
-        reseña
-    precio -
-    2 fotos presentacionales -
-    Clases lista
-        Nombre
-        Descripción
-        Link
-        Duración
-    tiempo total -
-     */
     @Lob
     private MultipartFile photo;
 
-    @Lob
-    private MultipartFile galleryfront;
+    @Column(nullable = false)
+    @Length(max = 100)
+    private String desc;
+
+    @Column(nullable = false)
+    private String reseña;
+
+    @Column(nullable = false)
+    private String urlTrailer;
+
+    @Column(nullable = false)
+    private String fecha;
+
+    @Column(nullable = false)
+    private float precio;
+
+    @Column(nullable = false)
+    private float duracion;
 
     @Lob
-    private MultipartFile galleryback;
+    private MultipartFile frontImg;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Lob
+    private MultipartFile backImg;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "Cursos_Inscritos",
+            name = "Incripción_Curso",
             joinColumns = @JoinColumn(
                     name = "curso_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "usuario_id", referencedColumnName = "id"))
     private Collection<Usuario> usuarios;
 
-    /*
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tutor", nullable = false)
     private Usuario tutor;
-    */
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_contenidoCurso")
-    private Contenido contenido;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Categorias_Cursos",
+            joinColumns = @JoinColumn(
+                    name = "curso_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "categoria", referencedColumnName = "id"))
+    private Collection<Categoria> categorias;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoriaCursos")
-    private Categoria categoria;
+    @OneToMany(mappedBy = "curso")
+    private Collection<Clase> clases;
 
-    public Curso(String nombre, String desc, String fecha, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
+    public Curso(final String nombre, final MultipartFile photo, final String desc, final String reseña, final String urlTrailer, final String fecha, final float precio, final float duracion, final MultipartFile frontImg, final MultipartFile backImg,  final Usuario tutor, final Collection<Categoria> categorias) {
         this.nombre = nombre;
+        this.photo = photo;
         this.desc = desc;
+        this.reseña = reseña;
+        this.urlTrailer = urlTrailer;
         this.fecha = fecha;
-        this.usuarios = usuarios;
-        this.contenido = contenido;
-        this.categoria = categoria;
+        this.precio = precio;
+        this.duracion = duracion;
+        this.frontImg = frontImg;
+        this.backImg = backImg;
+        this.tutor = tutor;
+        this.categorias = categorias;
     }
 }

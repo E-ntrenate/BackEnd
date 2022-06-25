@@ -1,5 +1,6 @@
 package com.example.entrenate.model.usuario;
 
+import com.example.entrenate.model.curso.Curso;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,6 +55,7 @@ public class Usuario {
     @Length(min = 8, max = 12)
     private long numeroIdentidad;
 
+    @Column(nullable = false)
     private String tipoIdentidad;
 
     @Column(nullable = false)
@@ -62,7 +64,7 @@ public class Usuario {
     @Lob
     private MultipartFile fotoPerfil;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -71,13 +73,10 @@ public class Usuario {
                     name = "rol_id", referencedColumnName = "id"))
     private Collection<Rol> roles;
 
-    /*
     @OneToMany(mappedBy = "tutor")
     private Collection<Curso> cursosTutora;
-    */
 
-    //Constructor sin Id.
-    public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Collection<Rol> roles) {
+    public Usuario(final String nombre, final String apellido, final String nickname, final MultipartFile documento, final String correo, final String password, final byte edad, final String ciudad, final long numeroIdentidad, final String tipoIdentidad, final String fechaNacimiento, final Collection<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;
