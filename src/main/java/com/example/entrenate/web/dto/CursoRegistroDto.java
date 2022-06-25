@@ -24,6 +24,10 @@ public class CursoRegistroDto {
     private Usuario tutor;
     private Collection<Categoria> categorias;
 
+    public CursoRegistroDto() {
+
+    }
+
     public CursoRegistroDto(final String nombre, final MultipartFile photo, final String desc, final String reseña, final String urlTrailer, final String fecha, final float precio, final float duracion, final MultipartFile frontImg, final MultipartFile backImg, final Usuario tutor, final Collection<Categoria> categorias) {
         this.nombre = nombre;
         this.photo = photo;
