@@ -13,7 +13,10 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Curso {
+public class
+
+
+Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,7 +31,7 @@ public class Curso {
 
     private String urlTrailer;
     private String fecha;
-    private float precio;
+    private String precio;
     private float duracion;
 
     /*
@@ -43,7 +46,7 @@ public class Curso {
     calificación (promedio)
         usuario
         puntaje
-        reseña
+        reseña-
     precio -
     2 fotos presentacionales -
     Clases lista
@@ -84,8 +87,25 @@ public class Curso {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoriaCursos")
     private Categoria categoria;
+/*
+    public Curso(String nombre, String desc, String reseña, String urlTrailer, String fecha, float precio, float duracion, MultipartFile photo, MultipartFile galleryfront, MultipartFile galleryback, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
+        this.nombre = nombre;
+        this.desc = desc;
+        this.reseña = reseña;
+        this.urlTrailer = urlTrailer;
+        this.fecha = fecha;
+        this.precio = precio;
+        this.duracion = duracion;
+        this.photo = photo;
+        this.galleryfront = galleryfront;
+        this.galleryback = galleryback;
+        this.usuarios = usuarios;
+        this.contenido = contenido;
+        this.categoria = categoria;
+    }
 
-    public Curso(String nombre, String desc, String fecha, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
+
+public Curso(String nombre, String desc, String fecha, Collection<Usuario> usuarios, Contenido contenido, Categoria categoria) {
         this.nombre = nombre;
         this.desc = desc;
         this.fecha = fecha;
@@ -93,4 +113,17 @@ public class Curso {
         this.contenido = contenido;
         this.categoria = categoria;
     }
+
+ */
+
+    public Curso(String nombre, String desc, String fecha, String reseña, String urlTrailer, String precio) {
+        this.nombre = nombre;
+        this.desc = desc;
+        this.fecha = fecha;
+        this.reseña = reseña;
+        this.urlTrailer = urlTrailer;
+        this.precio = precio;
+    }
+
+
 }

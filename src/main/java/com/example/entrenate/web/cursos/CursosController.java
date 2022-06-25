@@ -1,13 +1,16 @@
 package com.example.entrenate.web.cursos;
 
-import com.example.entrenate.model.curso.Curso;
 import com.example.entrenate.service.CursoService;
+import com.example.entrenate.web.dto.CursoRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/FormRegistrarCurso")
 public class CursosController {
 
     @Autowired
@@ -16,7 +19,19 @@ public class CursosController {
     public CursosController(CursoService cursoService) {
         this.cursoService = cursoService;
     }
-    @GetMapping("/cursos/{id}")
+    @ModelAttribute("curso")
+    public CursoRegistroDto cursoRegistroDto(){
+        return new CursoRegistroDto();
+    }
+    @GetMapping
+    public String mostrarRegistrationForm() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "principal/FormRegistrarCurso";
+        }
+        return "redirect:/";
+    }
+  /*  @GetMapping("/cursos/{id}")
     public String deleteCurso(@PathVariable("id") Integer id){
         cursoService.deleteCursotById(id);
         return "redirect:/cursos";
@@ -43,7 +58,18 @@ public class CursosController {
 
         // save updated curso object
         cursoService.updateCurso(existingCurso);
-        return "redirect:/";
+        return "redirect:/FormRegistrarCurso";
     }
+
+   */
+    @PostMapping
+    public String saveCurso(@ModelAttribute CursoRegistroDto registroDto){
+        cursoService.saveCurso(registroDto);
+        /*return "redirect:/FormRegistrarCurso?success"*/
+        return "redirect:/FormRegistrarCurso?success";
+
+    }
+
+
 
 }
