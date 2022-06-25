@@ -1,34 +1,38 @@
 package com.example.entrenate.web.dto;
 
-import com.example.entrenate.model.curso.Categoria;
-import com.example.entrenate.model.curso.Clase;
 import com.example.entrenate.model.usuario.Usuario;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Lob;
+import java.time.LocalDate;
 
 public class CursoRegistroDto {
 
     private String nombre;
-    private MultipartFile photo;
+
+    @Lob
+    private byte[] photo;
     private String desc;
     private String reseña;
     private String urlTrailer;
-    private String fecha;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha;
     private float precio;
-    private float duracion;
-    private MultipartFile frontImg;
-    private MultipartFile backImg;
+    private String categoria;
+
+    @Lob
+    private byte[] frontImg;
+
+    @Lob
+    private byte[] backImg;
     private Usuario tutor;
-    private Collection<Categoria> categorias;
 
     public CursoRegistroDto() {
 
     }
 
-    public CursoRegistroDto(final String nombre, final MultipartFile photo, final String desc, final String reseña, final String urlTrailer, final String fecha, final float precio, final float duracion, final MultipartFile frontImg, final MultipartFile backImg, final Usuario tutor, final Collection<Categoria> categorias) {
+    public CursoRegistroDto(final String nombre, final byte[] photo, final String desc, final String reseña, final String urlTrailer, final LocalDate fecha, final float precio, final String categoria, final byte[] frontImg, final byte[] backImg, final Usuario tutor) {
         this.nombre = nombre;
         this.photo = photo;
         this.desc = desc;
@@ -36,11 +40,10 @@ public class CursoRegistroDto {
         this.urlTrailer = urlTrailer;
         this.fecha = fecha;
         this.precio = precio;
-        this.duracion = duracion;
+        this.categoria = categoria;
         this.frontImg = frontImg;
         this.backImg = backImg;
         this.tutor = tutor;
-        this.categorias = categorias;
     }
 
     public String getNombre() {
@@ -51,11 +54,11 @@ public class CursoRegistroDto {
         this.nombre = nombre;
     }
 
-    public MultipartFile getPhoto() {
+    public byte[] getPhoto() {
         return this.photo;
     }
 
-    public void setPhoto(final MultipartFile photo) {
+    public void setPhoto(final byte[] photo) {
         this.photo = photo;
     }
 
@@ -83,11 +86,11 @@ public class CursoRegistroDto {
         this.urlTrailer = urlTrailer;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return this.fecha;
     }
 
-    public void setFecha(final String fecha) {
+    public void setFecha(final LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -99,27 +102,27 @@ public class CursoRegistroDto {
         this.precio = precio;
     }
 
-    public float getDuracion() {
-        return this.duracion;
+    public String getCategoria() {
+        return this.categoria;
     }
 
-    public void setDuracion(final float duracion) {
-        this.duracion = duracion;
+    public void setCategoria(final String categoria) {
+        this.categoria = categoria;
     }
 
-    public MultipartFile getFrontImg() {
+    public byte[] getFrontImg() {
         return this.frontImg;
     }
 
-    public void setFrontImg(final MultipartFile frontImg) {
+    public void setFrontImg(final byte[] frontImg) {
         this.frontImg = frontImg;
     }
 
-    public MultipartFile getBackImg() {
+    public byte[] getBackImg() {
         return this.backImg;
     }
 
-    public void setBackImg(final MultipartFile backImg) {
+    public void setBackImg(final byte[] backImg) {
         this.backImg = backImg;
     }
 
@@ -129,14 +132,6 @@ public class CursoRegistroDto {
 
     public void setTutor(final Usuario tutor) {
         this.tutor = tutor;
-    }
-
-    public Collection<Categoria> getCategorias() {
-        return this.categorias;
-    }
-
-    public void setCategorias(final Collection<Categoria> categorias) {
-        this.categorias = categorias;
     }
 }
 

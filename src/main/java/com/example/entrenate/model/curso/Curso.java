@@ -3,9 +3,10 @@ package com.example.entrenate.model.curso;
 import com.example.entrenate.model.usuario.Usuario;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity
@@ -23,7 +24,7 @@ public class Curso {
     private String nombre;
 
     @Lob
-    private MultipartFile photo;
+    private byte[] photo;
 
     @Column(nullable = false)
     @Length(max = 100)
@@ -36,7 +37,8 @@ public class Curso {
     private String urlTrailer;
 
     @Column(nullable = false)
-    private String fecha;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha;
 
     @Column(nullable = false)
     private float precio;
@@ -44,11 +46,13 @@ public class Curso {
     @Column(nullable = false)
     private float duracion;
 
-    @Lob
-    private MultipartFile frontImg;
+    private String categoria;
 
     @Lob
-    private MultipartFile backImg;
+    private byte[] frontImg;
+
+    @Lob
+    private byte[] backImg;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -63,19 +67,10 @@ public class Curso {
     @JoinColumn(name = "id_tutor", nullable = false)
     private Usuario tutor;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Categorias_Cursos",
-            joinColumns = @JoinColumn(
-                    name = "curso_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "categoria", referencedColumnName = "id"))
-    private Collection<Categoria> categorias;
-
     @OneToMany(mappedBy = "curso")
     private Collection<Clase> clases;
 
-    public Curso(final String nombre, final MultipartFile photo, final String desc, final String reseña, final String urlTrailer, final String fecha, final float precio, final float duracion, final MultipartFile frontImg, final MultipartFile backImg,  final Usuario tutor, final Collection<Categoria> categorias) {
+    public Curso(final String nombre, final byte[] photo, final String desc, final String reseña, final String urlTrailer, final LocalDate fecha, final float precio, final String categoria, final byte[] frontImg, final byte[] backImg, final Usuario tutor) {
         this.nombre = nombre;
         this.photo = photo;
         this.desc = desc;
@@ -83,10 +78,9 @@ public class Curso {
         this.urlTrailer = urlTrailer;
         this.fecha = fecha;
         this.precio = precio;
-        this.duracion = duracion;
+        this.categoria = categoria;
         this.frontImg = frontImg;
         this.backImg = backImg;
         this.tutor = tutor;
-        this.categorias = categorias;
     }
 }

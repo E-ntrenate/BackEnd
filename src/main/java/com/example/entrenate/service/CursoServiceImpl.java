@@ -1,71 +1,35 @@
 package com.example.entrenate.service;
 
 import com.example.entrenate.model.curso.Curso;
-import com.example.entrenate.model.usuario.Usuario;
 import com.example.entrenate.repository.CursoRepository;
 import com.example.entrenate.web.dto.CursoRegistroDto;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CursoServiceImpl implements CursoService{
-
     private final CursoRepository cursoRepository;
 
-    public CursoServiceImpl(CursoRepository cursoRepository) {
+    @Autowired
+    public CursoServiceImpl(final CursoRepository cursoRepository) {
         this.cursoRepository = cursoRepository;
     }
 
     @Override
-    public List<Curso> getAllCursos() {
-        return cursoRepository.findAll();
-    }
-
-
-
-    @Override
-    public Curso saveCurso(CursoRegistroDto registroDto) {
+    public Curso save(CursoRegistroDto cursoDto) {
         Curso curso = new Curso(
-                registroDto.getNombre(),
-                registroDto.getPhoto(),
-                registroDto.getDesc(),
-                registroDto.getReseña(),
-                registroDto.getUrlTrailer(),
-                registroDto.getFecha(),
-                registroDto.getPrecio(),
-                registroDto.getDuracion(),
-                registroDto.getFrontImg(),
-                registroDto.getBackImg(),
-                registroDto.getTutor(),
-                registroDto.getCategorias());
+                cursoDto.getNombre(),
+                cursoDto.getPhoto(),
+                cursoDto.getDesc(),
+                cursoDto.getReseña(),
+                cursoDto.getUrlTrailer(),
+                cursoDto.getFecha(),
+                cursoDto.getPrecio(),
+                cursoDto.getCategoria(),
+                cursoDto.getFrontImg(),
+                cursoDto.getBackImg(),
+                cursoDto.getTutor());
 
         return cursoRepository.save(curso);
     }
-
-
-    @Override
-    public Curso getCursoById(Integer id) {
-        return cursoRepository.findById(id).get();
-    }
-
-    @Override
-    public Curso updateCurso(Curso curso) {
-        return cursoRepository.save(curso);
-    }
-
-    @Override
-    public void deleteCursotById(Integer id) {
-        cursoRepository.deleteById(id);
-    }
-    //me metio esta porqueria a la fuerza
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
-
 }

@@ -8,8 +8,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
 
 
 @CrossOrigin
@@ -38,10 +42,27 @@ public class RegistrationController {
 
     @PostMapping
     public String registrarCuentaUsuario(@Valid @ModelAttribute("usuario") UsuarioRegistroDto registroDto,
-                                         BindingResult bindingResult){
+                                         BindingResult bindingResult,
+                                         @RequestParam("archivo") MultipartFile archivo,
+                                         @RequestParam("fechaNacimiento") String fechaNacimiento) throws IOException{
+
+        LocalDate nacimiento = LocalDate.parse(fechaNacimiento);
+        LocalDate today = LocalDate.now();
+        byte edad = (byte) Period.between(nacimiento, today).getYears();
+
+        byte[] documento = archivo.getBytes();
+
+        if (edad < 12 || edad > 100){
+            return "redirect:/registro?error";
+        }
+
+        registroDto.setFechaNacimiento(nacimiento);
+        registroDto.setEdad(edad);
+        registroDto.setDocumento(documento);
         usuarioService.save(registroDto);
 
         if (bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors());
             return "redirect:/registro?error";
         } else {
             return "redirect:/registro?success";

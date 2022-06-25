@@ -35,6 +35,9 @@
                               th:object="${usuario}">
                             <legend class="border-bottom mb-2 text-center" style="color:#1B5BAC">Registrate</legend>
 
+                            <div class="alert alert-error" th:if="${param.error}">
+                                Los datos no son correctos.
+                            </div>
                             <div class="alert alert-success" th:if="${param.success}">
                                 Te has registrado exitosamente.
                             </div>
@@ -43,7 +46,7 @@
                                 <div class="col-md-6 mb-1">
                                     <div class="input-group">
                                         <label class="input-fill" for="nombre">
-                                            <input class="form-control" id="nombre" name="Nombre" th:field="*{nombre}"
+                                            <input class="form-control" id="nombre" name="nombre" th:field="*{nombre}"
                                                    type="text"/>
                                             <span class="input-label">Nombre</span>
                                             <span class="input-label" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el Nombre</span>
@@ -96,8 +99,7 @@
                                 <div class="col-md-6 mb-1">
                                     <div class="input-group">
                                         <label class="input-fill" for="fechaNacimiento">
-                                            <input class="form-control" id="fechaNacimiento" name="fechaNacimiento"
-                                                   th:field="*{fechaNacimiento}" type="date"/>
+                                            <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" type="date"/>
                                             <span class="input-label2">Fecha de Nacimiento</span>
                                             <i class="fa-regular fa-calendar-days"></i>
                                         </label>
@@ -142,8 +144,7 @@
                                             <i class="fas fa-file"></i>
                                             Adjuntar ID
                                             <label for="btn-file"></label>
-                                            <input accept="image/png, image/jpeg, image/svg" id="btn-file" name="documento"
-                                                   th:field="*{documento}" type="file">
+                                            <input accept="image/png, image/jpeg, image/svg" id="btn-file" name="archivo" type="file">
                                         </label>
                                     </div>
                                 </div>
