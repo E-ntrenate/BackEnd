@@ -41,4 +41,9 @@ public class MainController {
         return "cursosInscritos";
     }
 
+    @GetMapping("/crearCurso")
+    public String crearCurso(){
+        return "crearCurso";
+    }
+
 }
