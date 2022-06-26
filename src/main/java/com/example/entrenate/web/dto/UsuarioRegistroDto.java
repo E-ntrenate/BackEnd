@@ -1,26 +1,36 @@
 package com.example.entrenate.web.dto;
 
-import org.springframework.web.multipart.MultipartFile;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Lob;
+import java.time.LocalDate;
 
 public class UsuarioRegistroDto {
     private String nombre;
     private String apellido;
     private String nickname;
-    private MultipartFile documento;
+
+    @Lob
+    private byte[] documento;
     private String correo;
     private String password;
     private byte edad;
     private String ciudad;
     private long numeroIdentidad;
     private String tipoIdentidad;
-    private String fechaNacimiento;
-    private MultipartFile fotoPerfil;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaNacimiento;
+
+    @Lob
+    private byte[] fotoPerfil;
 
     public UsuarioRegistroDto() {
 
     }
 
-    public UsuarioRegistroDto(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, MultipartFile fotoPerfil) {
+    public UsuarioRegistroDto(String nombre, String apellido, String nickname, byte[] documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, LocalDate fechaNacimiento, byte[] fotoPerfil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;
@@ -59,11 +69,11 @@ public class UsuarioRegistroDto {
         this.nickname = nickname;
     }
 
-    public MultipartFile getDocumento() {
+    public byte[] getDocumento() {
         return documento;
     }
 
-    public void setDocumento(MultipartFile documento) {
+    public void setDocumento(byte[] documento) {
         this.documento = documento;
     }
 
@@ -115,19 +125,19 @@ public class UsuarioRegistroDto {
         this.tipoIdentidad = tipoIdentidad;
     }
 
-    public String getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public MultipartFile getFotoPerfil() {
+    public byte[] getFotoPerfil() {
         return this.fotoPerfil;
     }
 
-    public void setFotoPerfil(final MultipartFile fotoPerfil) {
+    public void setFotoPerfil(final byte[] fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
 }

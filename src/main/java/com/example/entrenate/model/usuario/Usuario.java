@@ -1,17 +1,15 @@
 package com.example.entrenate.model.usuario;
 
+import com.example.entrenate.model.curso.Curso;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.example.entrenate.model.curso.Curso;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -34,7 +32,7 @@ public class Usuario {
     private String nickname;
 
     @Lob
-    private MultipartFile documento;
+    private byte[] documento;
 
     @Column(nullable = false, unique = true)
     @Email
@@ -45,8 +43,7 @@ public class Usuario {
     private String password;
 
     @Column(nullable = false)
-    @Min(value = 12)
-    @Max(value = 100)
+    @Range(min = 2, max = 100)
     private byte edad;
 
     @Column(nullable = false)
@@ -54,31 +51,32 @@ public class Usuario {
     private String ciudad;
 
     @Column(nullable = false, unique = true)
-    @Length(min = 8, max = 12)
+    @Range(min = 10000000L, max = 999999999999L)
     private long numeroIdentidad;
 
+    @Column(nullable = false)
     private String tipoIdentidad;
 
     @Column(nullable = false)
-    private String fechaNacimiento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaNacimiento;
 
     @Lob
-    private MultipartFile fotoPerfil;
+    private byte[] fotoPerfil;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "usuario_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id"))
-    private Set<Rol> roles;
+    private Collection<Rol> roles;
 
     @OneToMany(mappedBy = "tutor")
-    private Set<Curso> cursosTutora;
+    private Collection<Curso> cursosTutora;
 
-    //Constructor sin Id.
-    public Usuario(String nombre, String apellido, String nickname, MultipartFile documento, String correo, String password, byte edad, String ciudad, long numeroIdentidad, String tipoIdentidad, String fechaNacimiento, Set<Rol> roles) {
+    public Usuario(final String nombre, final String apellido, final String nickname, final byte[] documento, final String correo, final String password, final byte edad, final String ciudad, final long numeroIdentidad, final String tipoIdentidad, final LocalDate fechaNacimiento, final Collection<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;

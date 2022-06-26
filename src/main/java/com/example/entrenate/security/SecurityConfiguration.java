@@ -34,10 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/registro", "/Curso-Noinscrito", "/test/**", "/assets/**", "/styles/**").permitAll()
+                .antMatchers("/", "/registro", "/assets/**", "/styles/**").permitAll()
                 .antMatchers("/perfil/**").authenticated()
                 .antMatchers("/home").hasAnyRole("ESTUDIANTE", "ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/test/**", "/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
