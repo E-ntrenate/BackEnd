@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,7 +19,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String nombre;
@@ -61,14 +62,14 @@ public class Curso {
                     name = "curso_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "usuario_id", referencedColumnName = "id"))
-    private Collection<Usuario> usuarios;
+    private Set<Usuario> usuarios;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tutor", nullable = false)
     private Usuario tutor;
 
     @OneToMany(mappedBy = "curso")
-    private Collection<Clase> clases;
+    private Set<Clase> clases;
 
     public Curso(final String nombre, final byte[] photo, final String desc, final String reseña, final String urlTrailer, final LocalDate fecha, final float precio, final String categoria, final byte[] frontImg, final byte[] backImg, final Usuario tutor) {
         this.nombre = nombre;

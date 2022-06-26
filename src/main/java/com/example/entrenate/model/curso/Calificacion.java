@@ -25,8 +25,8 @@ public class Calificacion {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class CalificacionKey implements Serializable{
-        private int usuario_id;
-        private int curso_id;
+        private Long usuario_id;
+        private Long curso_id;
     }
 
     @EmbeddedId

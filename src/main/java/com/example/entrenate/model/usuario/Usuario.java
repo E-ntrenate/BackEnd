@@ -9,7 +9,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,7 +20,7 @@ import java.util.Collection;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     @Length(min = 3, max = 50)
@@ -64,19 +65,19 @@ public class Usuario {
     @Lob
     private byte[] fotoPerfil;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "usuario_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id"))
-    private Collection<Rol> roles;
+    private Set<Rol> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "tutor")
-    private Collection<Curso> cursosTutora;
+    private Set<Curso> cursosTutora;
 
-    public Usuario(final String nombre, final String apellido, final String nickname, final byte[] documento, final String correo, final String password, final byte edad, final String ciudad, final long numeroIdentidad, final String tipoIdentidad, final LocalDate fechaNacimiento, final Collection<Rol> roles) {
+    public Usuario(final String nombre, final String apellido, final String nickname, final byte[] documento, final String correo, final String password, final byte edad, final String ciudad, final long numeroIdentidad, final String tipoIdentidad, final LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname = nickname;
@@ -88,6 +89,9 @@ public class Usuario {
         this.numeroIdentidad = numeroIdentidad;
         this.tipoIdentidad = tipoIdentidad;
         this.fechaNacimiento = fechaNacimiento;
-        this.roles = roles;
+    }
+
+    public void agregarRol(Rol rol){
+        this.roles.add(rol);
     }
 }

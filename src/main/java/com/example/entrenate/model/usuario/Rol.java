@@ -13,12 +13,9 @@ import java.util.List;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(nullable = false, unique = true)
     private String nombre;
-
-    @ManyToMany(mappedBy = "roles")
-    private List<Usuario> usuarios;
 
     //Constructor sin Id.
     public Rol(String nombre) {

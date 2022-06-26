@@ -34,10 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/registro", "/assets/**", "/styles/**").permitAll()
+                .antMatchers("/", "/registro/**", "/assets/**", "/styles/**").permitAll()
                 .antMatchers("/perfil/**").authenticated()
-                .antMatchers("/home").hasAnyRole("ESTUDIANTE", "ADMIN")
-                .antMatchers("/test/**", "/admin/**").hasRole("ADMIN")
+                .antMatchers("/home").hasAnyAuthority("ESTUDIANTE", "ADMIN")
+                .antMatchers("/test/**", "/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,7 +53,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                     .logoutUrl("/logout")
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                     .clearAuthentication(true)
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID", "remember-me")
