@@ -31,7 +31,8 @@
             <div class="login-data">
                 <div class=" abs-center p-4 align-items-center">
                     <div class="container border p-6 align-self-center" style="border-color: #1B5BAC;">
-                        <form class="login-form" enctype="multipart/form-data" method="POST" th:action="@{/registro/{rol}(rol = ${rol})}"
+                        <form class="login-form" enctype="multipart/form-data" method="POST"
+                              th:action="@{/registro/{rol}(rol = ${rol})}"
                               th:object="${usuario}">
                             <legend class="border-bottom mb-2 text-center" style="color:#1B5BAC">Registrate</legend>
 
@@ -206,7 +207,7 @@
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </div>
 
-    <script th:insert="fragments.html :: loadcode"></script>
+    <label th:insert="fragments.html :: loadcode"></label>
 
 </section>
 </body>

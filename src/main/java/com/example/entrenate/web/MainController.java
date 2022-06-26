@@ -35,6 +35,25 @@ public class MainController {
     public String buscadorusuarios(){
         return "BuscadorUsuarios";
     }
+    
+    @GetMapping("/contacto")
+    public String contacto(){
+        return "principal/PQRS";
+    }
+    
+    @GetMapping("/perfil")
+    public String perfil(){
+        return "principal/Perfil";
+    }
+
+    @GetMapping("/Registrarcurso")
+    public String Registrarcurso(){
+        return "FormRegistrarCurso";
+    }
+    @GetMapping("/editarperfil")
+    public String editarperfil(){
+        return "principal/EditarPerfil";
+    }
 
     @GetMapping("/cursosInscritos")
     public String cursosInscritos(){
