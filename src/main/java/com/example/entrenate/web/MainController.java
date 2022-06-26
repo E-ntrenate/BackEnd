@@ -36,4 +36,9 @@ public class MainController {
         return "BuscadorUsuarios";
     }
 
+    @GetMapping("/cursosInscritos")
+    public String cursosInscritos(){
+        return "cursosInscritos";
+    }
+
 }
