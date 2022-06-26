@@ -2,6 +2,7 @@ package com.example.entrenate.auth;
 
 import com.example.entrenate.model.usuario.Rol;
 import com.example.entrenate.model.usuario.Usuario;
+import com.example.entrenate.repository.RolRepository;
 import com.example.entrenate.repository.UsuarioRepository;
 import com.example.entrenate.web.dto.UsuarioRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +13,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static com.example.entrenate.security.ApplicationUserRole.*;
-
 @Service
-public class UsuarioServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements UsuarioService {
     //INYECCIÓN DE DEPENDENCIAS//
     private final UsuarioRepository usuarioRepository;
+    private final RolRepository rolRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, final RolRepository rolRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.rolRepository = rolRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -34,24 +34,19 @@ public class UsuarioServiceImpl implements UsuarioService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByNickname(username);
 
-        if (usuario == null){
+        if (usuario == null) {
             throw new UsernameNotFoundException("Usuario o contraseña inválidos.");
         }
 
-        return new UsuarioPrincipal(
-                usuario.getNickname(),
-                usuario.getPassword(),
-                ESTUDIANTE.getGrantedAuthorities(),
-                true,
-                true,
-                true,
-                true
-        );
+        return new UsuarioPrincipal(usuario);
     }
 
     //Recibe los datos del cliente por el DTO y los persiste en la Base de Datos.
     @Override
-    public Usuario save(UsuarioRegistroDto registroDto) {
+    public Usuario saveWithRole(UsuarioRegistroDto registroDto, String rol) {
+
+        Rol rolUsuario = rolRepository.findByNombre(rol);
+
         Usuario usuario = new Usuario(
                 registroDto.getNombre(),
                 registroDto.getApellido(),
@@ -63,9 +58,10 @@ public class UsuarioServiceImpl implements UsuarioService{
                 registroDto.getCiudad(),
                 registroDto.getNumeroIdentidad(),
                 registroDto.getTipoIdentidad(),
-                registroDto.getFechaNacimiento(),
-                Arrays.asList(new Rol(ESTUDIANTE.name()))
-        );
+                registroDto.getFechaNacimiento());
+
+        usuario.agregarRol(rolUsuario);
+
         return usuarioRepository.save(usuario);
     }
 
@@ -75,7 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(Long id) {
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         usuario.getAuthorities();
         usuarioRepository.deleteById(id);
@@ -83,12 +79,12 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario updateUsuario(Usuario usuario){
+    public Usuario updateUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
     @Override
-    public Usuario getUsuarioById(Integer id) {
+    public Usuario getUsuarioById(Long id) {
         return usuarioRepository.findById(id).get();
     }
 }
