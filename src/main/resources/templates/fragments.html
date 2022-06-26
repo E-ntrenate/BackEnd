@@ -54,9 +54,10 @@
                 <li><a class="nav-link scrollto" th:href="@{/#testimonials}">Reseñas</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/#pricing}">Precios</a></li>
 
-                <form method="get" th:action="@{/logout}">
-                    <button class="getstarted scrollto" sec:authorize="isAuthenticated()" type="submit">Cerrar Sesión
-                    </button>
+                <a class="getstarted scrollto" href="javascript: logoutForm.submit()"
+                   sec:authorize="isAuthenticated()">Cerrar Sesión</a>
+                <form method="post" name="logoutForm" th:action="@{/logout}" th:hidden="true">
+                    <button class="getstarted scrollto" type="submit" value="logout"></button>
                 </form>
 
                 <li><a class="getstarted scrollto" sec:authorize="isAnonymous()" th:href="@{/registro}">Registro</a>
