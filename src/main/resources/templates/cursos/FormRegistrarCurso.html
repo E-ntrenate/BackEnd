@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- <html lang="es" xmlns:th="http://www.thymeleaf.org"> -->
+<head>
+    <title>Registrar Curso</title>
+
+    <!-- Estilo de letra -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet"/>
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <th:block th:include="fragments.html :: headerfiles"></th:block>
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" th:href="@{~/assets/css/Login.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/normalize.css}">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:insert="fragments.html :: header"></header>
+
+<section class="d-flex align-items-center" id="hero">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="register-data">
+                <div class=" abs-center p-5 align-items-center">
+                    <div class="container border p-5 align-self-center" style="border-color: #1B5BAC;">
+                        <form class="login-form" enctype="multipart/form-data" method="post" th:action="@{/cursos/crear}" th:object="${curso}">
+                            <legend class="border-bottom mb-5 text-center" style="color:#1B5BAC">!  Registra un nuevo Curso  ¡</legend>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="input-group">
+                                        <label class="input-fill" for="nombre">
+                                            <input class="form-control" id="nombre" name="nombre" th:field="*{nombre}" type="text"/>
+                                            <span class="input-label">Nombre</span>
+                                            <i class="fas fa-user-graduate"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <i class="fa-solid fa-image"></i><span>Insertar imagen de que represente el curso</span>
+                                    <div class="container-file">
+                                        <input type="file" accept="image/png, image/jpeg, image/svg" name="photo" id="photo" class="inputfile custom" required/>
+                                        </i><label for="photo"><span id="file_name"></span><strong>Imagen</strong></label>
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <i class="fa-solid fa-book-bookmark"></i><label for="descripcion" class="form-label">Descripción del curso</label>
+                                    <textarea class="form-control" id="descripcion" rows="6" name="descripcion" placeholder="Descripción de lo que se realizara en el curso" th:field="*{desc}" required></textarea>
+                                </div>
+                                
+                                <div class="col-md-6 mb-1">
+                                    <i class="far fa-comment-dots"></i><label for="reseña" class="form-label">Reseña sobre el curso</label>
+                                    <textarea class="form-control" id="reseña" rows="6" name="reseña" placeholder="Reseña del curso" th:field="*{reseña}" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="input-group">
+                                        <label class="input-fill" for="UrlTrailer">
+                                            <input class="form-control" id="UrlTrailer" name="UrlTrailer" th:field="*{urlTrailer}" type="text"/>
+                                            <span class="input-label">UrlTrailer</span>
+                                            <i class="fas fa-laptop-code"></i>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-1">
+                                    <div class="input-group">
+                                        <label class="input-fill" for="fechaCreación">
+                                            <input class="form-control" id="fechaCreación" name="fechaCreación" th:field="*{fecha}" type="date"/>
+                                            <span class="input-label2">Fecha de Creación</span>
+                                            <i class="fa-regular fa-calendar-days"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="input-group">
+                                        <label class="input-fill" for="precio">
+                                            <input class="form-control" id="precio" name="precio" th:field="*{precio}" type="number"/>
+                                            <span class="input-label">Precio del Curso</span>
+                                            <i class="fab fa-cc-paypal"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <div class="input-group">
+                                        <label class="input-fill" for="categoria">
+                                            <input class="form-control" id="categoria" name="categoria" th:field="*{categoria}" type="text"/>
+                                            <span class="input-label">Categoría</span>
+                                            <i class="fas fa-clipboard-list"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <i class="fa-regular fa-image"></i><span>Insertar imagen Frontal para el curso</span>
+                                    <div class="container-file">
+                                        <input accept="image/png, image/jpeg, image/svg" type="file" name="frontImg" id="frontImg" class="inputfile1 custom"/>
+                                        <label for="frontImg"><span id="file_imagen1"></span><strong>Imagen</strong></label>
+                                      </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <i class="fa-regular fa-image"></i><span>Insertar imagen Trasera para el curso</span>
+                                    <div class="container-file">
+                                        <input accept="image/png, image/jpeg, image/svg" type="file" name="backImg" id="backImg" class="inputfile2 custom"/>
+                                        <label for="backImg"><span id="file_imagen2"></span><strong>Imagen</strong></label>
+                                      </div>
+                                </div>
+                                <div class="col mb-3">
+                                    <i class="fa-solid fa-chalkboard-user"></i><div class="input-group">
+                                        <label class="input-fill">
+                                            <div class="select1">
+                                                <select aria-label="Default select example" class="form-select" name="tutor" th:field="*{tutor}">
+                                                    <option value="0">Seleccionar Tutor</option>
+                                                    <option th:each="tutor : ${tutores}" th:value="${tutor}" th:text="${tutor.nombre}"></option>
+                                                </select>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                        
+                            <input class="btn-login" type="submit" value="Registrar Curso"/>
+            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <th:block th:include="fragments.html :: jsfiles"></th:block>
+        <!-- Vendor JS Files -->
+        <script src="/assets/vendor/purecounter/purecounter.js"></script>
+
+        <!-- Template Main JS File -->
+        <script crossorigin="anonymous"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+    <label th:insert="fragments.html :: loadcode"></label>
+
+</section>
+</body>
+</html>

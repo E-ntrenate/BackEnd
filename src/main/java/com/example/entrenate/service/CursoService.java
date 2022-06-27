@@ -1,16 +1,9 @@
 package com.example.entrenate.service;
 
-import com.example.entrenate.model.Cursos;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.example.entrenate.model.curso.Curso;
+import com.example.entrenate.web.dto.CursoRegistroDto;
 
-import java.util.List;
-
-public interface CursoService extends UserDetailsService {
-
-    List<Cursos> getAllCursos();
-    Cursos saveCurso(Cursos curso);
-    Cursos updateCurso(Cursos curso);
-    void deleteCursotById(Integer id);
-    Cursos getCursoById(Integer id);
+public interface CursoService {
+    Curso save(CursoRegistroDto cursoDto);
 
 }
