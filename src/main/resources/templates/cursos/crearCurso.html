@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Curso</title>
+    <th:block th:include="fragments.html :: headerfiles"></th:block>
+</head>
+
+<body>
+<header th:insert="fragments.html :: header"></header>
+
+<form enctype="multipart/form-data" method="post" th:action="@{/cursos/crear}" th:object="${curso}">
+    <legend style="color:#1B5BAC">Crear Curso</legend>
+
+    <div class="alert alert-error" th:if="${param.error}">
+        Los datos no son correctos.
+    </div>
+    <div class="alert alert-success" th:if="${param.success}">
+        Curso creado exitosamente.
+    </div>
+
+    <label for="nombre">
+        <input id="nombre" name="nombre" th:field="*{nombre}" type="text"/>
+        <span class="input-label">Nombre</span>
+        <span class="input-label" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el Nombre</span>
+    </label> <br>
+
+
+    <label for="photo">Foto principal</label>
+    <input accept="image/png, image/jpeg, image/svg" id="photo" name="photo" type="file">
+    <br>
+
+    <label for="desc">
+        <input id="desc" name="desc" th:field="*{desc}" type="text" style="height: 100px"/>
+        <span class="input-label">Descripción Corta</span>
+    </label> <br>
+
+    <label for="reseña">
+        <input id="reseña" name="reseña" th:field="*{reseña}" type="text" style="height: 500px"/>
+        <span class="input-label">Reseña</span>
+    </label> <br>
+
+    <label for="urlTrailer">
+        <input id="urlTrailer" name="urlTrailer" th:field="*{urlTrailer}" type="text"/>
+        <span class="input-label">Url de Tráiler</span>
+    </label> <br>
+
+    <label for="fecha">
+        <input id="fecha" name="fecha" th:field="*{fecha}" type="date"/>
+        <span class="input-label2">Fecha de Nacimiento</span>
+    </label> <br>
+
+    <label for="precio">
+        <input id="precio" name="precio" th:field="*{precio}" type="number"/>
+        <span class="input-label">Precio del curso</span>
+    </label> <br>
+
+    <label for="categoria">
+        <input id="categoria" name="categoria" th:field="*{categoria}" type="text"/>
+        <span class="input-label">Categoría Principal</span>
+    </label> <br>
+
+    <label for="frontImg">Foto frontal</label>
+    <input accept="image/png, image/jpeg, image/svg" id="frontImg" name="frontImg" type="file">
+    <br>
+
+    <label for="backImg">Foto trasera</label>
+    <input accept="image/png, image/jpeg, image/svg" id="backImg" name="backImg" type="file">
+    <br>
+
+    <div class="select">
+        <select class="form-select" name="tutor" th:field="*{tutor}">
+            <option value="0">Seleccionar Tutor</option>
+            <option th:each="tutor : ${tutores}" th:value="${tutor}" th:text="${tutor.nombre}"></option>
+        </select>
+    </div><br>
+
+</form>
+
+</body>
+</html>

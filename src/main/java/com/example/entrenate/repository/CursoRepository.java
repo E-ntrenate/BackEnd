@@ -1,8 +1,10 @@
 package com.example.entrenate.repository;
 
-import com.example.entrenate.model.Cursos;
+import com.example.entrenate.model.curso.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CursoRepository extends JpaRepository<Cursos, Integer> {
+@Repository
+public interface CursoRepository extends JpaRepository<Curso, Long> {
 
 }
