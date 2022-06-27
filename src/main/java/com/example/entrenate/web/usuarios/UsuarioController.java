@@ -62,7 +62,7 @@ public class UsuarioController {
                                          BindingResult bindingResult,
                                          @RequestParam("archivo") MultipartFile archivo,
                                          @RequestParam("fechaNacimiento") String fechaNacimiento) throws IOException {
-        
+
         LocalDate nacimiento = LocalDate.parse(fechaNacimiento);
         LocalDate today = LocalDate.now();
         byte edad = (byte) Period.between(nacimiento, today).getYears();

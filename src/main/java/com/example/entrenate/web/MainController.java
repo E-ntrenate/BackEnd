@@ -41,9 +41,9 @@ public class MainController {
         return "principal/PQRS";
     }
 
-    @GetMapping("/Registrarcurso")
-    public String Registrarcurso(){
-        return "FormRegistrarCurso";
+    @GetMapping("/cursos")
+    public String cursos(){
+        return "cursos";
     }
 
 }

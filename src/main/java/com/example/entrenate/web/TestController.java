@@ -20,18 +20,8 @@ public class TestController {
         return "Curso-Noinscrito";
     }
 
-    @GetMapping("cursos")
-    public String cursos(){
-        return "cursos";
-    }
-
     @GetMapping("buscar/cursos")
     public String buscacursos(){
         return "BuscadorCursos";
-    }
-
-    @GetMapping("ver/home")
-    public String verHome(){
-        return "principal/Home";
     }
 }

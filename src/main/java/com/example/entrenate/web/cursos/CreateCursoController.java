@@ -42,7 +42,7 @@ public class CreateCursoController {
         List<Usuario> tutores = usuarioRepository.findByRoles(rol);
         model.addAttribute("tutores", tutores);
 
-        return "crearCurso";
+        return "cursos/FormRegistrarCurso";
     }
 
     @PostMapping
