@@ -24,8 +24,10 @@ public class Curso {
     @Column(nullable = false, unique = true)
     private String nombre;
 
-    @Lob
+   /* @Lob
     private byte[] photo;
+
+    */
 
     @Column(nullable = false)
     @Length(max = 100)
@@ -55,6 +57,8 @@ public class Curso {
     @Lob
     private byte[] backImg;
 
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Incripción_Curso",
@@ -64,24 +68,25 @@ public class Curso {
                     name = "usuario_id", referencedColumnName = "id"))
     private Set<Usuario> usuarios;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tutor", nullable = false)
     private Usuario tutor;
+
+     */
 
     @OneToMany(mappedBy = "curso")
     private Set<Clase> clases;
 
-    public Curso(final String nombre, final byte[] photo, final String desc, final String reseña, final String urlTrailer, final LocalDate fecha, final float precio, final String categoria, final byte[] frontImg, final byte[] backImg, final Usuario tutor) {
+
+
+    public Curso(String nombre, String desc, String reseña, String urlTrailer, LocalDate fecha, float precio, float duracion, String categoria) {
         this.nombre = nombre;
-        this.photo = photo;
         this.desc = desc;
         this.reseña = reseña;
         this.urlTrailer = urlTrailer;
         this.fecha = fecha;
         this.precio = precio;
+        this.duracion = duracion;
         this.categoria = categoria;
-        this.frontImg = frontImg;
-        this.backImg = backImg;
-        this.tutor = tutor;
     }
 }

@@ -41,11 +41,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1200-jdbc41</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+
         </dependency>
 
 

@@ -38,16 +38,18 @@ public class CreateCursoController {
 
     @GetMapping
     public String mostrarFormularioRegistro(Model model){
-        Rol rol = rolRepository.findByNombre("ADMIN");
+        /*Rol rol = rolRepository.findByNombre("ADMIN");
         List<Usuario> tutores = usuarioRepository.findByRoles(rol);
         model.addAttribute("tutores", tutores);
+
+         */
 
         return "cursos/FormRegistrarCurso";
     }
 
     @PostMapping
-    public String crearCurso(@Valid  @ModelAttribute("curso") CursoRegistroDto curso,
-                             BindingResult bindingResult,
+    public String crearCurso(/*@Valid */ @ModelAttribute CursoRegistroDto curso){
+                             /*BindingResult bindingResult,
                              @RequestParam("photo")MultipartFile photoFile,
                              @RequestParam("frontImg")MultipartFile frontFile,
                              @RequestParam("backImg")MultipartFile backFile) throws IOException {
@@ -56,12 +58,17 @@ public class CreateCursoController {
         curso.setFrontImg(frontFile.getBytes());
         curso.setFrontImg(backFile.getBytes());
 
-        cursoService.save(curso);
+                              */
 
+        cursoService.save(curso);
+        return "redirect:/admin/cursos/crear?success";
+/*
         if (bindingResult.hasErrors()){
             return "redirect:/admin/cursos/crear?error";
         } else {
             return "redirect:/admin/cursos/crear?success";
         }
+
+ */
     }
 }

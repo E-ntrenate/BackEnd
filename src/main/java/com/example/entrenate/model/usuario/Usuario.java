@@ -74,9 +74,11 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(
                     name = "rol_id", referencedColumnName = "id"))
     private Set<Rol> roles = new HashSet<>();
-
+/*
     @OneToMany(mappedBy = "tutor")
     private Set<Curso> cursosTutora;
+    
+ */
 
     public Usuario(final String nombre, final String apellido, final String nickname, final byte[] documento, final String correo, final String password, final byte edad, final String ciudad, final long numeroIdentidad, final String tipoIdentidad, final LocalDate fechaNacimiento) {
         this.nombre = nombre;

@@ -19,16 +19,14 @@ public class CursoServiceImpl implements CursoService{
     public Curso save(CursoRegistroDto cursoDto) {
         Curso curso = new Curso(
                 cursoDto.getNombre(),
-                cursoDto.getPhoto(),
                 cursoDto.getDesc(),
                 cursoDto.getReseña(),
                 cursoDto.getUrlTrailer(),
                 cursoDto.getFecha(),
                 cursoDto.getPrecio(),
-                cursoDto.getCategoria(),
-                cursoDto.getFrontImg(),
-                cursoDto.getBackImg(),
-                cursoDto.getTutor());
+                cursoDto.getDuracion(),
+                cursoDto.getCategoria());
+
 
         return cursoRepository.save(curso);
     }

@@ -30,7 +30,7 @@
             <div class="register-data">
                 <div class=" abs-center p-5 align-items-center">
                     <div class="container border p-5 align-self-center" style="border-color: #1B5BAC;">
-                        <form class="login-form" enctype="multipart/form-data" method="post" th:action="@{/cursos/crear}" th:object="${curso}">
+                        <form class="login-form" enctype="multipart/form-data" method="post" th:action="@{/admin/cursos/crear}" th:object="${curso}">
                             <legend class="border-bottom mb-5 text-center" style="color:#1B5BAC">!  Registra un nuevo Curso  ¡</legend>
                             <div class="row">
                                 <div class="col-md-6 mb-1">
@@ -42,13 +42,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1">
-                                    <i class="fa-solid fa-image"></i><span>Insertar imagen de que represente el curso</span>
-                                    <div class="container-file">
-                                        <input type="file" accept="image/png, image/jpeg, image/svg" name="photo" id="photo" class="inputfile custom" required/>
-                                        </i><label for="photo"><span id="file_name"></span><strong>Imagen</strong></label>
-                                    </div>
-                                </div>
+
                             </div>   
                             <div class="row">
                                 <div class="col-md-6 mb-1">
@@ -103,32 +97,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-1">
-                                    <i class="fa-regular fa-image"></i><span>Insertar imagen Frontal para el curso</span>
-                                    <div class="container-file">
-                                        <input accept="image/png, image/jpeg, image/svg" type="file" name="frontImg" id="frontImg" class="inputfile1 custom"/>
-                                        <label for="frontImg"><span id="file_imagen1"></span><strong>Imagen</strong></label>
-                                      </div>
-                                </div>
-                                <div class="col-md-6 mb-1">
-                                    <i class="fa-regular fa-image"></i><span>Insertar imagen Trasera para el curso</span>
-                                    <div class="container-file">
-                                        <input accept="image/png, image/jpeg, image/svg" type="file" name="backImg" id="backImg" class="inputfile2 custom"/>
-                                        <label for="backImg"><span id="file_imagen2"></span><strong>Imagen</strong></label>
-                                      </div>
-                                </div>
-                                <div class="col mb-3">
-                                    <i class="fa-solid fa-chalkboard-user"></i><div class="input-group">
-                                        <label class="input-fill">
-                                            <div class="select1">
-                                                <select aria-label="Default select example" class="form-select" name="tutor" th:field="*{tutor}">
-                                                    <option value="0">Seleccionar Tutor</option>
-                                                    <option th:each="tutor : ${tutores}" th:value="${tutor}" th:text="${tutor.nombre}"></option>
-                                                </select>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
+
+
                         
                             <input class="btn-login" type="submit" value="Registrar Curso"/>
             
