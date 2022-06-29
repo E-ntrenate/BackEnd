@@ -51,10 +51,10 @@ public class Curso {
 
     private String categoria;
 
-    @Lob
+
     private byte[] frontImg;
 
-    @Lob
+
     private byte[] backImg;
 
 

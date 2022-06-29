@@ -33,7 +33,7 @@ public class Usuario {
     @Length(min = 4)
     private String nickname;
 
-    @Lob
+
     private byte[] documento;
 
     @Column(nullable = false, unique = true)
@@ -63,7 +63,7 @@ public class Usuario {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
 
-    @Lob
+
     private byte[] fotoPerfil;
 
     @ManyToMany(fetch = FetchType.EAGER)
