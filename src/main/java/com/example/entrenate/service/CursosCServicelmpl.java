@@ -1,5 +1,6 @@
 package com.example.entrenate.service;
 
+import com.example.entrenate.model.curso.Compra;
 import com.example.entrenate.model.curso.Curso;
 import com.example.entrenate.model.curso.CursosC;
 import com.example.entrenate.repository.CursoRepository;
@@ -9,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,12 +25,12 @@ public class CursosCServicelmpl implements CursosCService {
         this.cursosCRepository = cursosCRepository;
     }
     @Override
-    public CursosC comprar(Long id_Juego) {
+    public CursosC comprar(Long id_Cursos) {
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         usuario.getAuthorities();
         String id_Usuario = usuario.getName();
-        CursosC juego = new CursosC(id_Juego,id_Usuario);
-        return cursosCRepository.save(juego);
+        CursosC cursoC = new CursosC(id_Cursos,id_Usuario);
+        return cursosCRepository.save(cursoC);
 
     }
 
@@ -43,6 +45,24 @@ public class CursosCServicelmpl implements CursosCService {
     @Override
     public Curso buscarPorId(Long id) {
         return cursoRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Compra> listarCursosC() {
+        ArrayList<CursosC> juegosComp = (ArrayList<CursosC>) cursosCRepository.findAll();
+        List<Compra> aux = new ArrayList<>();
+        Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        String id_Usuario = usuario.getName();
+
+        for(int i = 0; i < juegosComp.size(); i++){
+            if (juegosComp.get(i).getId_Usuario().equals(id_Usuario)){
+                CursosC auxJC = juegosComp.get(i);
+                Curso auxJ = buscarPorId(auxJC.getId_Curso());
+                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha());
+                aux.add(auxC);
+            }
+        }
+        return aux;
     }
 
     @Override
@@ -67,4 +87,6 @@ public class CursosCServicelmpl implements CursosCService {
         }
         return moda;
     }
+
+
 }

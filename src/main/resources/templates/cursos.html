@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{~/assets/css/cards.css}">
 </head>
 
-<body>
+<body th:object="${cursos}">
 <header th:insert="fragments.html :: header"></header>
 
 <main id="main">
@@ -30,173 +30,24 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-4 d-flex align-item-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Matematicas</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Matematicas</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
+                    <div th:each="curso:${cursos}" >
+                        <div class="card">
+                            <div class="face front">
+                                <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
+                                <h3 th:text="${curso.nombre}"></h3>
+                            </div>
+                            <div class="face back">
+                                <h3 th:text="${curso.nombre}"></h3>
+                                <p th:text="${curso.categoria}"></p>
+                                <div class="link">
+                                    <a th:href="@{/buy/} + ${curso.id}"
+                                       th:text="'Comprar'" title="Comprar"></a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Ingles</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Ingles</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Analisis de Texto</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Analisis de Texto</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Filosofia</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Filosofia</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Calculo</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Calculo</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-12 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Introduccion a las ciencias de la salud</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Introduccion a las ciencias de la salud</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Programación</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Programación</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Sociales</h3>
-                        </div>
-
-                        <div class="face back">
-                            <h3>Sociales</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="Curso-Noinscrito.html">Details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
         </div>
     </section>

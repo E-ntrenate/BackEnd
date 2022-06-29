@@ -89,4 +89,6 @@ public class Curso {
         this.duracion = duracion;
         this.categoria = categoria;
     }
+
+
 }

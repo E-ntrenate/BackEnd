@@ -41,9 +41,5 @@ public class MainController {
         return "principal/PQRS";
     }
 
-    @GetMapping("/cursos")
-    public String cursos(){
-        return "cursos";
-    }
 
 }

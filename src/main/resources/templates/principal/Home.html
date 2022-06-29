@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{~/assets/css/cards.css}">
 </head>
 
-<body>
+<body th:object="${cursos}">
 <!-- ======= Header ======= -->
 <header th:insert="fragments.html :: header">
     <!-- Lista de Personas. MODIFICAR.-->
@@ -26,89 +26,19 @@
             <h3 style="text-align:center">¡Mira, tus Cursos Inscritos!</h3>
             <div class="row">
                 <div class="col-lg-3 col-md-4 d-flex align-item-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Matemáticas</h3>
+                    <div th:each="curso:${cursos}" >
+                        <div class="card">
+                            <div class="face front">
+                                <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
+                                <h3 th:text="${curso.nombre}"></h3>
+                            </div>
+                            <div class="face back">
+                                <h3 th:text="${curso.nombre}"></h3>
+                                <p th:text="${curso.categoria}"></p>
+
+                            </div>
                         </div>
 
-                        <div class="face back">
-                            <h3>Matemáticas</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Análisis de Texto</h3>
-                        </div>
-                        <div class="face back">
-                            <h3>Análisis de Texto</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Calculo</h3>
-                        </div>
-                        <div class="face back">
-                            <h3>Calculo</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-12 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Introducción a las ciencias de la salud</h3>
-                        </div>
-                        <div class="face back">
-                            <h3>Introducción a las ciencias de la salud</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="face front">
-                            <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                            <h3>Programación</h3>
-                        </div>
-                        <div class="face back">
-                            <h3>Programación</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste,
-                                nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam
-                                eos?</p>
-                            <div class="link">
-                                <a href="">Details</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -116,7 +46,7 @@
     </section>
 
     <section class="faq section-bg" id="faq">
-        <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up" >
             <div class="row">
                 <div class="section-title">
                     <h2>Resumen de tus actividades</h2>
