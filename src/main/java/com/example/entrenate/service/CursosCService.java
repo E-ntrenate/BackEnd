@@ -11,7 +11,7 @@ public interface CursosCService {
     public void eliminar(Long id);
     public Curso buscarPorId(Long id);
     public List<Compra> listarCursosC();
-    public Long Mas_comprado();
+
 }
 
 

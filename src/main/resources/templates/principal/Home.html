@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{~/assets/css/cards.css}">
 </head>
 
-<body th:object="${cursos}">
+<body th:object="${Home}">
 <!-- ======= Header ======= -->
 <header th:insert="fragments.html :: header">
     <!-- Lista de Personas. MODIFICAR.-->
@@ -26,15 +26,15 @@
             <h3 style="text-align:center">¡Mira, tus Cursos Inscritos!</h3>
             <div class="row">
                 <div class="col-lg-3 col-md-4 d-flex align-item-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div th:each="curso:${cursos}" >
+                    <div th:each="cursoc:${Home}" >
                         <div class="card">
                             <div class="face front">
                                 <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                                <h3 th:text="${curso.nombre}"></h3>
+                                <h3 th:text="${cursoc.fecha}"></h3>
                             </div>
                             <div class="face back">
-                                <h3 th:text="${curso.nombre}"></h3>
-                                <p th:text="${curso.categoria}"></p>
+                                <h3 th:text="${cursoc.fecha}"></h3>
+                                <p th:text="${cursoc.categoria}"></p>
 
                             </div>
                         </div>
@@ -126,58 +126,7 @@
         </div>
     </section><!-- End Frequently Asked Questions Section -->
 
-    <section class="team section-bg" id="team">
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>Tus certificados</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="member">
-                        <div class="member-img">
-                            <img alt="" class="img-fluid" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                        </div>
-                        <div class="member-info">
-                            <h4>Certificado de Filosofía</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="member">
-                        <div class="member-img">
-                            <img alt="" class="img-fluid" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                        </div>
-                        <div class="member-info">
-                            <h4>Certificado de Sociales</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="member">
-                        <div class="member-img">
-                            <img alt="" class="img-fluid" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                        </div>
-                        <div class="member-info">
-                            <h4>Certificado de Habitos de Estudio</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                    <div class="member">
-                        <div class="member-img">
-                            <img alt="" class="img-fluid" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                        </div>
-                        <div class="member-info">
-                            <h4>Certificado de Ingles</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <div th:insert="fragments.html :: jsfiles"></div>
 </main>

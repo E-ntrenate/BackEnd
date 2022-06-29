@@ -34,7 +34,7 @@ public class CursoCController {
         return cursoRepository.findAll();
 
     }
-    @ModelAttribute("home_")
+    @ModelAttribute("Home")
     public List<Compra> CargarcursosC(){
 
         return cursosCService.listarCursosC();
@@ -49,7 +49,7 @@ public class CursoCController {
         cursosCService.comprar(id_Cursos);
         return "redirect:/cursos";
     }
-    @GetMapping ("/home_")
+    @GetMapping ("/Home")
     public String listarJuegosC(Model model){
         /*List<Compra> listadoJuegosC = cursosCService.listarCursosC();
         model.addAttribute("Titulo","Lista de Cursos");

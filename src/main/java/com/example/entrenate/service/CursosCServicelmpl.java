@@ -49,14 +49,14 @@ public class CursosCServicelmpl implements CursosCService {
 
     @Override
     public List<Compra> listarCursosC() {
-        ArrayList<CursosC> juegosComp = (ArrayList<CursosC>) cursosCRepository.findAll();
+        ArrayList<CursosC> cursosComp = (ArrayList<CursosC>) cursosCRepository.findAll();
         List<Compra> aux = new ArrayList<>();
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         String id_Usuario = usuario.getName();
 
-        for(int i = 0; i < juegosComp.size(); i++){
-            if (juegosComp.get(i).getId_Usuario().equals(id_Usuario)){
-                CursosC auxJC = juegosComp.get(i);
+        for(int i = 0; i < cursosComp.size(); i++){
+            if (cursosComp.get(i).getId_Usuario().equals(id_Usuario)){
+                CursosC auxJC = cursosComp.get(i);
                 Curso auxJ = buscarPorId(auxJC.getId_Curso());
                 Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha());
                 aux.add(auxC);
@@ -65,28 +65,7 @@ public class CursosCServicelmpl implements CursosCService {
         return aux;
     }
 
-    @Override
-    public Long Mas_comprado() {
-        List<Long> aux = cursosCRepository.findByMas_comprado().stream().map(CursosC::getId_Curso).collect(Collectors.toList());
-        HashMap<Long, Integer> mapa = new HashMap<>();
-        for (int x = 0; x < aux.size(); x++) {
-            Long numero = aux.get(x);
-            if (mapa.containsKey(numero)) {
-                mapa.put(numero, mapa.get(numero) + 1);
-            } else {
-                mapa.put(numero, 1);
-            }
-        }
-        int mayor = 0;
-        Long moda = null;
-        for (HashMap.Entry<Long, Integer> entry : mapa.entrySet()) {
-            if (entry.getValue() > mayor) {
-                mayor = entry.getValue();
-                moda = entry.getKey();
-            }
-        }
-        return moda;
-    }
+
 
 
 }

@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface CursosCRepository extends CrudRepository<CursosC, Long> {
 
-    @Query("Select mi from CursosC mi")
-    public List<CursosC> findByMas_comprado();
+
 }
