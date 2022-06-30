@@ -44,7 +44,7 @@ public class CursoCController {
      */
     @GetMapping("/cursos")
     public String listarCursos(Model model) {
-        return "/cursos";
+        return "cursos";
     }
     @GetMapping ("/buy/{id}")
     public String comprar(@PathVariable("id") Long id_Cursos){
