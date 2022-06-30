@@ -38,7 +38,7 @@
                             </div>
                             <div class="face back">
                                 <h3 th:text="${curso.nombre}"></h3>
-                                <p th:text="${curso.categoria}"></p>
+                                <p th:text="${curso.desc}"></p>
                                 <div class="link">
                                     <a th:href="@{/buy/} + ${curso.id}"
                                        th:text="'Comprar'" title="Comprar"></a>

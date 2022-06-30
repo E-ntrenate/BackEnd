@@ -13,16 +13,18 @@ public class Compra {
     private String Categoria;
     private LocalDate Fecha;
     private String Url_curso;
+    private String Desc;
     public Compra(){
     }
 
-    public Compra(Long id_CursosC, Long id_Curso, String nombre_curso, String categoria, LocalDate fecha, String url_curso) {
+    public Compra(Long id_CursosC, Long id_Curso, String nombre_curso, String categoria, LocalDate fecha, String url_curso, String desc) {
         Id_CursosC = id_CursosC;
         this.id_Curso = id_Curso;
         Nombre_curso = nombre_curso;
         Categoria = categoria;
         Fecha = fecha;
         Url_curso = url_curso;
+        Desc = desc;
     }
 
     public Long getId() {
@@ -79,6 +81,14 @@ public class Compra {
 
     public void setUrl_curso(String url_curso) {
         Url_curso = url_curso;
+    }
+
+    public String getDesc() {
+        return Desc;
+    }
+
+    public void setDesc(String desc) {
+        Desc = desc;
     }
 }
 //(auxJC.getId_Curso(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha());

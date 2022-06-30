@@ -59,7 +59,7 @@ public class CursosCServicelmpl implements CursosCService {
             if (cursosComp.get(i).getId_Usuario().equals(id_Usuario)){
                 CursosC auxJC = cursosComp.get(i);
                 Curso auxJ = buscarPorId(auxJC.getId_Curso());
-                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha(),auxJ.getUrlTrailer());
+                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha(),auxJ.getUrlTrailer(),auxJ.getDesc());
 
                 aux.add(auxC);
             }
