@@ -1,22 +1,36 @@
 package com.example.entrenate.model.curso;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
-
+@Entity
 public class Compra {
+    @Id
+    private Long id;
     private Long Id_CursosC;
     private Long id_Curso;
     private String Nombre_curso;
     private String Categoria;
     private LocalDate Fecha;
+    private String Url_curso;
     public Compra(){
     }
 
-    public Compra(Long id_CursosC, Long id_Curso, String nombre_curso, String categoria, LocalDate fecha) {
-        this.Id_CursosC = id_CursosC;
+    public Compra(Long id_CursosC, Long id_Curso, String nombre_curso, String categoria, LocalDate fecha, String url_curso) {
+        Id_CursosC = id_CursosC;
         this.id_Curso = id_Curso;
-        this.Nombre_curso = nombre_curso;
-        this.Categoria = categoria;
-        this.Fecha = fecha;
+        Nombre_curso = nombre_curso;
+        Categoria = categoria;
+        Fecha = fecha;
+        Url_curso = url_curso;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId_CursosC() {
@@ -57,6 +71,14 @@ public class Compra {
 
     public void setFecha(LocalDate fecha) {
         Fecha = fecha;
+    }
+
+    public String getUrl_curso() {
+        return Url_curso;
+    }
+
+    public void setUrl_curso(String url_curso) {
+        Url_curso = url_curso;
     }
 }
 //(auxJC.getId_Curso(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha());

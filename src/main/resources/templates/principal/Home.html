@@ -30,11 +30,13 @@
                         <div class="card">
                             <div class="face front">
                                 <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
-                                <h3 th:text="${cursoc.fecha}"></h3>
+                                <h3 th:text="${cursoc.nombre_curso}"></h3>
                             </div>
                             <div class="face back">
                                 <h3 th:text="${cursoc.fecha}"></h3>
                                 <p th:text="${cursoc.categoria}"></p>
+                                <a style="color:white" th:href="${cursoc.url_curso}">Ingresar al curso aqui</a>
+
 
                             </div>
                         </div>
@@ -45,6 +47,7 @@
         </div>
     </section>
 
+    <!--
     <section class="faq section-bg" id="faq">
         <div class="container" data-aos="fade-up" >
             <div class="row">
@@ -124,7 +127,9 @@
 
             </div>
         </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section>
+    -->
+
 
 
 

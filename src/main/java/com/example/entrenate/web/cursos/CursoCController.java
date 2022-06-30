@@ -34,12 +34,14 @@ public class CursoCController {
         return cursoRepository.findAll();
 
     }
-    @ModelAttribute("Home")
+    /*@ModelAttribute("Home")
     public List<Compra> CargarcursosC(){
-
-        return cursosCService.listarCursosC();
-
+        List<Compra> milista = cursosCService.listarCursosC();
+        //System.out.println(milista.get(0).getNombre_curso());
+        return milista;
     }
+
+     */
     @GetMapping("/cursos")
     public String listarCursos(Model model) {
         return "/cursos";
@@ -49,13 +51,11 @@ public class CursoCController {
         cursosCService.comprar(id_Cursos);
         return "redirect:/cursos";
     }
-    @GetMapping ("/Home")
+    @GetMapping ("/home")
     public String listarJuegosC(Model model){
-        /*List<Compra> listadoJuegosC = cursosCService.listarCursosC();
-        model.addAttribute("Titulo","Lista de Cursos");
-        model.addAttribute("cursosC", listadoJuegosC);
+        List<Compra> listadoJuegosC = cursosCService.listarCursosC();
+        model.addAttribute("Home", listadoJuegosC);
 
-         */
         return "principal/Home";
     }
 

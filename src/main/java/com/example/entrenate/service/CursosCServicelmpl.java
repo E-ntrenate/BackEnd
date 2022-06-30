@@ -50,6 +50,7 @@ public class CursosCServicelmpl implements CursosCService {
     @Override
     public List<Compra> listarCursosC() {
         ArrayList<CursosC> cursosComp = (ArrayList<CursosC>) cursosCRepository.findAll();
+        System.out.println(cursosComp.size());
         List<Compra> aux = new ArrayList<>();
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         String id_Usuario = usuario.getName();
@@ -58,10 +59,12 @@ public class CursosCServicelmpl implements CursosCService {
             if (cursosComp.get(i).getId_Usuario().equals(id_Usuario)){
                 CursosC auxJC = cursosComp.get(i);
                 Curso auxJ = buscarPorId(auxJC.getId_Curso());
-                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha());
+                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha(),auxJ.getUrlTrailer());
+
                 aux.add(auxC);
             }
         }
+
         return aux;
     }
 

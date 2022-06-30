@@ -26,10 +26,12 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/home")
+    /*@GetMapping("/home")
     public String home(){
         return "principal/Home";
     }
+
+     */
 
     @GetMapping("/buscadorusuarios")
     public String buscadorusuarios(){
