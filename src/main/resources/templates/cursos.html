@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Cursos</title>
     <th:block th:include="fragments.html :: headerfiles"></th:block>
@@ -23,17 +23,18 @@
             </div>
         </div>
     </section><!-- End Breadcrumbs -->
-
-    <section class="d-flex align-items-center" id="hero">
-        <div class="container">
+    <div class="container">
             <h1 style="text-align:center">¡Mira nuestros Cursos!</h1>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-4 d-flex align-item-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="row mt-2">
+                <div class="col-12 col-md-3 mb-3">
+                    <input type="text" class="form-control" placeholder="Busca un curso:..." aria-label="Search cards" onkeyup="searchFilter()">
+                </div>
+            </div>
+                <!--<div class="col-lg-3 col-md-4 d-flex align-item-stretch" data-aos="fade-up" data-aos-delay="100">
                     <div th:each="curso:${cursos}" >
                         <div class="card">
                             <div class="face front">
-                                <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}">
+                                <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}" th:alt="${curso.nombre}">
                                 <h3 th:text="${curso.nombre}"></h3>
                             </div>
                             <div class="face back">
@@ -42,22 +43,69 @@
                                 <div class="link">
                                     <a th:href="@{/buy/} + ${curso.id}"
                                        th:text="'Comprar'" title="Comprar"></a>
-
-                                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/cursos/} + ${curso.id} + @{/verEstudiantes}"
-                                       th:text="'Ver Inscritos'" title="Ver Inscritos"></a>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                </div>-->
+            <div class="row row-cols-1 row-cols-lg-3 g-4">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div th:each="curso:${cursos}" >
+                        <div class="col">
+                            <div class="card">
+                                <div class="face front">
+                                    <img alt="" th:src="@{~/assets/img/Logos/Logo.jpg}" th:alt="${curso.nombre}" class="card-img-top">
+                                    <h3 th:text="${curso.nombre}"></h3>
+                                </div>
+                                <div class="face back">
+                                    <div class="card-body d-flex flex-column">
+                                        <h3 th:text="${curso.nombre}" class="card-title"></h3>
+                                    </div>
+                                    <div class="card-body2  d-flex flex-column">
+                                        <p th:text="${curso.desc}" class="card-text"></p>
+                                        <div class="link">
+                                            <a th:href="@{/buy/} + ${curso.id}"
+                                        th:text="'Comprar'" title="Comprar"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
     <footer th:insert="fragments.html :: footer"></footer>
     <div th:insert="fragments.html :: jsfiles"></div>
-
+    <!--<script>
+        function searchList(){
+        document.addEventListener("keyup",(e)=>{
+            if(e.target.matches(".card-filter")){
+                console.log(e.key);
+                document.querySelectorAll(".face front").forEach((el) =>
+                    el.textContent.toLowerCase().includes(e.target.value)
+                    ? el.classList("filter")
+                    :el.class.add("filter")
+                );}    
+        } )
+    }
+    </script>-->
+    <script>
+        var searchFilter = () => {
+            const input = document.querySelector(".form-control");
+            const cards = document.getElementsByClassName("col");
+            let filter = input.value
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].querySelector(".card-body");
+                if (title.innerText.toLowerCase().indexOf(filter.toLowerCase()) > -1) {
+                    cards[i].classList.remove("d-none")
+                } else {
+                    cards[i].classList.add("d-none")
+                }
+            }
+        }
+    </script>
 </main>
 </body>
 </html>
