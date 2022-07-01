@@ -3,8 +3,10 @@ package com.example.entrenate.service;
 import com.example.entrenate.model.curso.Compra;
 import com.example.entrenate.model.curso.Curso;
 import com.example.entrenate.model.curso.CursosC;
+import com.example.entrenate.model.usuario.Usuario;
 import com.example.entrenate.repository.CursoRepository;
 import com.example.entrenate.repository.CursosCRepository;
+import com.example.entrenate.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +22,8 @@ public class CursosCServicelmpl implements CursosCService {
     private CursosCRepository cursosCRepository;
     @Autowired
     private CursoRepository cursoRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
     public CursosCServicelmpl(CursosCRepository  cursosCRepository) {
         super();
         this.cursosCRepository = cursosCRepository;
@@ -56,10 +60,10 @@ public class CursosCServicelmpl implements CursosCService {
         String id_Usuario = usuario.getName();
 
         for(int i = 0; i < cursosComp.size(); i++){
-            if (cursosComp.get(i).getId_Usuario().equals(id_Usuario)){
+            if (cursosComp.get(i).getIdUsuario().equals(id_Usuario)){
                 CursosC auxJC = cursosComp.get(i);
-                Curso auxJ = buscarPorId(auxJC.getId_Curso());
-                Compra auxC = new Compra(auxJC.getId_CursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha(),auxJ.getUrlTrailer(),auxJ.getDesc());
+                Curso auxJ = buscarPorId(auxJC.getIdCurso());
+                Compra auxC = new Compra(auxJC.getIdCursosC(), auxJ.getId(), auxJ.getNombre(), auxJ.getCategoria(), auxJ.getFecha(),auxJ.getUrlTrailer(),auxJ.getDesc());
 
                 aux.add(auxC);
             }
@@ -68,7 +72,14 @@ public class CursosCServicelmpl implements CursosCService {
         return aux;
     }
 
-
-
-
+    @Override
+    public List<Usuario> listarEstudiantes(Long id_Cursos) {
+        List<CursosC> registros=cursosCRepository.findAllByIdCurso(id_Cursos);
+        List<Usuario> estudiantes=new ArrayList<>();
+        for (CursosC registro:registros) {
+            String nombreEstudiante = registro.getIdUsuario();
+            estudiantes.add(usuarioRepository.findByNickname(nombreEstudiante));
+        }
+        return estudiantes;
+    }
 }

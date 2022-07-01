@@ -7,41 +7,41 @@ import javax.persistence.*;
 public class CursosC {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_CursosC;
-    @Column(name = "Juego")
-    private Long id_Curso;
+    private Long idCursosC;
+
+    private Long idCurso;
     @Column(name = "Usuario")
-    private String id_Usuario;
+    private String idUsuario;
 
     public CursosC() {
     }
 
-    public CursosC(Long id_Curso, String id_Usuario) {
-        this.id_Curso = id_Curso;
-        this.id_Usuario = id_Usuario;
+    public CursosC(Long idCurso, String idUsuario) {
+        this.idCurso = idCurso;
+        this.idUsuario = idUsuario;
     }
 
-    public Long getId_CursosC() {
-        return id_CursosC;
+    public Long getIdCursosC() {
+        return idCursosC;
     }
 
-    public void setId_CursosC(Long id_CursosC) {
-        this.id_CursosC = id_CursosC;
+    public void setIdCursosC(Long idCursosC) {
+        this.idCursosC = idCursosC;
     }
 
-    public Long getId_Curso() {
-        return id_Curso;
+    public Long getIdCurso() {
+        return idCurso;
     }
 
-    public void setId_Curso(Long id_Curso) {
-        this.id_Curso = id_Curso;
+    public void setIdCurso(Long idCurso) {
+        this.idCurso = idCurso;
     }
 
-    public String getId_Usuario() {
-        return id_Usuario;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_Usuario(String id_Usuario) {
-        this.id_Usuario = id_Usuario;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+    <title>Lista Estudiantes</title>
+    <th:block th:include="fragments.html :: headerfiles"></th:block>
+
+
+    <style>
+
+        table th {
+            background-color: #011248;
+            color:#FDFDFE;
+        }
+    </style>
+
+</head>
+<body >
+<header th:insert="fragments.html :: header"></header>
+<br>
+
+<h1 th:text="${curso.nombre}"></h1>
+<table id="listCursos" class="display" style="width:100%">
+    <thead>
+    <tr >
+
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Nickname</th>
+        <th>Correo</th>
+        <th>Documento</th>
+
+    </tr>
+
+    </thead>
+    </thead>
+    <tr th:each="estudiante : ${estudiantes}">
+        <td style="color: #000 !Important"; scope="row" th:text="${estudiante.id}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${estudiante.nombre}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${estudiante.nickname}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${estudiante.correo}"></td>
+        <td style="color: #000 !Important"; scope="row" th:text="${estudiante.numeroIdentidad}"></td>
+
+    </tr>
+    </tbody>
+
+    </tr>
+
+    </tfoot>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
+
+
+
+</body>
+</html>

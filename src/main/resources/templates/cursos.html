@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Cursos</title>
     <th:block th:include="fragments.html :: headerfiles"></th:block>
@@ -42,6 +42,9 @@
                                 <div class="link">
                                     <a th:href="@{/buy/} + ${curso.id}"
                                        th:text="'Comprar'" title="Comprar"></a>
+
+                                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/cursos/} + ${curso.id} + @{/verEstudiantes}"
+                                       th:text="'Ver Inscritos'" title="Ver Inscritos"></a>
                                 </div>
                             </div>
                         </div>
