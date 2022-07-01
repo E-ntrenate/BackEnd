@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Cursos</title>
     <th:block th:include="fragments.html :: headerfiles"></th:block>
@@ -50,8 +50,8 @@
                     </div>
                 </div>-->
             <div class="row row-cols-1 row-cols-lg-3 g-4">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div th:each="curso:${cursos}" >
+                <div th:each="curso:${cursos}">
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <div class="col">
                             <div class="card">
                                 <div class="face front">
@@ -67,7 +67,10 @@
                                         <div class="link">
                                             <a th:href="@{/buy/} + ${curso.id}"
                                         th:text="'Comprar'" title="Comprar"></a>
+                                            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/cursos/} + ${curso.id} + @{/verEstudiantes}"
+                                               th:text="'Ver Inscritos'" title="Ver Inscritos"></a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
